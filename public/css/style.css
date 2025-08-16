@@ -1,0 +1,142 @@
+.mt-5, .my-5 {
+    margin-top: 2rem !important;
+    background-color: whitesmoke;
+}
+    
+    .min-vh-100 {
+    min-height: 10vh !important;
+}
+
+.form-inline a:hover i {
+        color: #01050c; 
+        transition: color 0.2s;
+    }
+
+.navbar,
+footer {
+    background: linear-gradient(to right, #1b803c, #30c461) !important;
+     color: white;
+}
+
+#navbarDropdown {
+    color: white !important;
+}
+
+.dropdown-item:active,
+.dropdown-item:focus {
+    background-color: #28a745 !important; 
+    color: #fff !important;               
+}
+
+/* Optional: keep hover green too */
+.dropdown-item:hover {
+    background-color: #28a745 !important;
+    color: #fff !important;
+}
+
+
+.custom-shadow {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body.modal-open {
+    position: fixed;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.w-70 {
+    width: 70% !important;
+}
+
+/* Space between navbar, cards, and footer */
+.auction-section {
+    margin-top: 80px; 
+    margin-bottom: 80px; 
+}
+
+/* Card styles */
+.auction-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* smooth hover animation */
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(6, 207, 107, 0.1); /* subtle shadow */
+    margin: auto;
+}
+
+.auction-card:hover {
+    transform: scale(1.05); /* zoom effect */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* stronger shadow on hover */
+}
+
+/* Card image */
+.auction-card img {
+    width: 100%;       /* fill the card width */
+    height: auto;      /* maintain aspect ratio */
+    object-fit: contain; /* ensure whole image is visible */
+    max-height: 140px; /* optional: restrict height */
+}
+
+/* Modal customization */
+.modal-content {
+    max-width: 400px; 
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Modal image */
+.modal-img {
+    max-height: 200px;
+    object-fit: contain;
+}
+
+/* Center all modal content */
+.modal-content h4,
+.modal-content p,
+.modal-content h5,
+.modal-content .btn {
+    margin-bottom: 10px;
+}
+
+.btn-bid {
+    background-color: #1b803c !important; 
+    border-color: #1b803c !important;
+    color: #fff !important;
+}
+
+.btn-bid:hover {
+    background-color: #218838 !important; 
+    border-color: #1e7e34 !important;
+    color: #fff !important;
+}
+
+.btn-bid:focus,
+.btn-bid:active {
+    background-color: #218838 !important;
+    border-color: #1e7e34 !important;
+    color: #fff !important;
+    box-shadow: none !important; 
+}
+
+.quick-view-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 2px 6px;
+    font-size: 12px;
+    z-index: 10;
+    background-color: #28a745 !important; 
+    border-color: #28a745 !important;
+    color: #fff !important;
+    border-radius: 4px;
+}
+
+.quick-view-btn:hover {
+    background-color: #218838 !important; 
+    border-color: #1e7e34 !important;
+}

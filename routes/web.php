@@ -2,7 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\UserRecordController;
+use App\Http\Controllers\ProductController;
+
+Route::get('/user-records', [UserRecordController::class, 'index']);
+
+Route::get('/products', [ProductController::class, 'index']);
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

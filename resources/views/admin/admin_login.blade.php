@@ -19,17 +19,17 @@
             @endif
 
             <div class="social-container">
-                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-google-plus-g"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.facebook.com" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.google.com" class="social-icon"><i class="fab fa-google-plus-g"></i></a>
+                <a href="https://www.linkedin.com" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
             </div>
 
             <p class="para_icon">or use your admin email for sign in</p>
-            <input type="email" name="email" placeholder="Admin Email" required />
+            <input type="email" name="email" placeholder="Email Address" required />
             <input type="password" name="password" placeholder="Password" required />
 
             <div class="button-wrapper">
-                <button type="submit" class="btn btn-primary">ADMIN LOGIN</button>
+                <button type="submit" class="btn btn-primary">LogIn</button>
             </div>
         </form>
     </div>
@@ -48,16 +48,18 @@
 
 @section('style')
     <style>
+        #main {
+        min-height: 70vh;     
+    }   
+
     .sign-in-container {
         background: #fff;
         padding: 40px;
         border-radius: 15px;
-        max-width: 400px;
-        margin: 50px auto;
+        max-width: 350px;
         text-align: center;
         
     }
-    
     .social-container a {
         margin: 0 10px;
         font-size: 18px;
@@ -77,7 +79,8 @@
         border-radius: 6px;   /* slightly rounded corners */
         border: 1px solid #ccc;
         box-sizing: border-box; /* include padding in width */
-}
+    }
     
 </style>
+
 @endsection

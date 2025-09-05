@@ -25,9 +25,9 @@
             @endif
 
             <div class="social-container">
-                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-google-plus-g"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.facebook.com" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.google.com" class="social-icon"><i class="fab fa-google-plus-g"></i></a>
+                <a href="https://www.linkedin.com" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
             </div>
 
             <p class="para_icon">or use your email for registration</p>

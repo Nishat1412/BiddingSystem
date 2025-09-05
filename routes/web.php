@@ -5,18 +5,18 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserRecordController;
 use App\Http\Controllers\ProductController;
 
+
 Route::get('/user-records', [UserRecordController::class, 'index']);
 
 Route::get('/products', [ProductController::class, 'index']);
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
 
-Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
-Route::post('/register', [AuthController::class, 'register']);
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register.create');
+Route::post('/register', [AuthController::class, 'store'])->name('register.store');
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-
 
 Route::get('/', function () {
     if (!session()->has('user_id')) {

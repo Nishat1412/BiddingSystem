@@ -1,65 +1,55 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\Models\SignUp;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
-    public function showLogin()
-    {
-        return view('auth.login');
-    }
+    
 
-    public function showRegister()
+     public function create()
     {
         return view('auth.register');
     }
 
-    public function register(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:50',
+            'name' => 'required|string|max:255',
             'username' => 'required|string|max:50',
-            'email' => 'required|email|unique:sign_up,email',
-            'phone' => 'nullable|string|max:14',
-            'password' => 'required|min:6|confirmed',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:14',
+            'password' => 'required|string|min:8|confirmed',
+            
+        ],
+    
+        [
+            'name.required' => 'Name is required',
+            'name.string' => 'Name must be a string',
+            'name.max' => 'Name may not be greater than 255 characters',
+            'name.min' => 'Name must be at least 2 characters',
+            'email.required' => 'Email is required',
+            'email.email' => 'Email must be a valid email address',
+            'email.max' => 'Email may not be greater than 255 characters',
+            'password.min' => 'Password must be at least 8 characters',
+            
         ]);
 
-        SignUp::create([
-            'name' => $request->name,
-            'username' => $request->username,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'password' => Hash::make($request->password),
+        DB::table('user_records')->insert([
+            'name' => $request->input('name'),
+            'username' => $request->input('username'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'password' => Hash::make($request->input('password')),
+            
+            
         ]);
-
-        return redirect('/login')->with('success', 'Registered successfully.');
+        dd('Student created successfully');
     }
-
-    public function login(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
-        $user = SignUp::where('email', $request->email)->first();
-
-        if ($user && Hash::check($request->password, $user->password)) {
-            Session::put('user_id', $user->id);
-            Session::put('username', $user->username);
-            return redirect('/');
-        }
-
-        return back()->with('error', 'Invalid credentials');
-    }
-
-    public function logout()
-    {
-        Session::flush();
-        return redirect('/login');
-    }
+    
 }

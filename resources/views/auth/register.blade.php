@@ -3,7 +3,7 @@
 @section('content')
 <div class="container" id="main">
     <div class="form-container sign-up-container">
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('auth.register.store') }}">
             @csrf
            
             <div class="heading-center">

@@ -31,11 +31,14 @@ class AuthController extends Controller
         [
             'name.required' => 'Name is required',
             'name.string' => 'Name must be a string',
-            'name.max' => 'Name may not be greater than 255 characters',
+            'name.max' => 'Name may not be greater than 50 characters',
             'name.min' => 'Name must be at least 2 characters',
+            'username.required' => 'Username is required',
+            'username.string' => 'Username must be a string',
+            'username.max' => 'Username may not be greater than 50 characters',
             'email.required' => 'Email is required',
             'email.email' => 'Email must be a valid email address',
-            'email.max' => 'Email may not be greater than 255 characters',
+            'phone.max' => 'Phone number may not be greater than 14 characters',
             'password.min' => 'Password must be at least 6 characters',
             
         ]);

@@ -2,9 +2,19 @@
 @section('title') Register @endsection
 @section('content')
 <div class="container" id="main">
+    <!-- SIGN UP FORM -->
     <div class="form-container sign-up-container">
-        <form method="POST" action="{{ route('auth.register.store') }}">
+        <form method="POST" action="{{ route('register.store') }}">
             @csrf
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
            
             <div class="heading-center">
                  <h4>Create Account</h4>
@@ -14,34 +24,30 @@
                 <div class="alert alert-success">{{ session('success') }}</div>
             @endif
 
-                    <div class="social-container">
-            <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" class="social-icon">
-                <i class="fab fa-google-plus-g"></i>
-            </a>
-            <a href="#" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-            </a>
-        </div>
-          <p class="para_icon">or use your email for registration</p>
+            <div class="social-container">
+                <a href="https://www.facebook.com" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.google.com" class="social-icon"><i class="fab fa-google-plus-g"></i></a>
+                <a href="https://www.linkedin.com" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+
+            <p class="para_icon">or use your email for registration</p>
             <div class="credentials">
                 <input type="text" name="name" placeholder="Name" required />
-            <input type="text" name="username" placeholder="Username" required />
-            <input type="email" name="email" placeholder="Email" required />
-            <input type="text" name="phone" placeholder="Phone" />
-            <input type="password" name="password" placeholder="Password" required />
-            <input type="password" name="password_confirmation" placeholder="Confirm Password" required />
-        <div class="button-wrapper">
+                <input type="text" name="username" placeholder="Username" required />
+                <input type="email" name="email" placeholder="Email" required />
+                <input type="text" name="phone" placeholder="Phone" />
+                <input type="password" name="password" placeholder="Password" required />
+                <input type="password" name="password_confirmation" placeholder="Confirm Password" required />
+                <div class="button-wrapper">
                     <button type="submit" class="btn btn-success">SIGN UP</button>
-        </div>
+                </div>
             </div>
         </form>
     </div>
 
+    <!-- SIGN IN FORM -->
     <div class="form-container sign-in-container">
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('login.submit') }}">
             @csrf
 
             <div class="heading-center">
@@ -52,16 +58,10 @@
                 <div class="alert alert-danger">{{ session('error') }}</div>
             @endif
 
-                    <div class="social-container">
-                <a href="#" class="social-icon">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="#" class="social-icon">
-                    <i class="fab fa-google-plus-g"></i>
-                </a>
-                <a href="#" class="social-icon">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
+            <div class="social-container">
+                <a href="https://www.facebook.com" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.google.com" class="social-icon"><i class="fab fa-google-plus-g"></i></a>
+                <a href="https://www.linkedin.com" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
             </div>
 
             <p class="para_icon">or use your email for sign in</p>
@@ -73,6 +73,7 @@
         </form>
     </div>
 
+    <!-- OVERLAY -->
     <div class="overlay-container">
         <div class="overlay">
             <div class="overlay-panel overlay-left">

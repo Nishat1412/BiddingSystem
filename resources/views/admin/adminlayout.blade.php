@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="{{asset('css/layout.css')}}" >
+<link rel="stylesheet" href="{{asset('css/adminlayout.css')}}" >
 </head>
 <body>
    <nav class="navbar navbar-expand-lg fixed-top custom-navbar">
@@ -39,32 +39,17 @@
 </div>
             
    <div class="form-inline my-2 my-lg-0">
-    <a href="{{ url('/register') }}" class="text-white mx-2" title="Register">
+    <a href="{{ url('/admin/register') }}" class="text-white mx-2" title="AddAdmin">
         <i class="bi bi-person-plus" style="font-size: 1.5rem;"></i>
     </a>
    
 </div>
 </nav>
 
+@yield('content4')
 @yield('content')
-@yield('content1')
 @yield('style')
 
-    <script>
-        const signUpBtn = document.getElementById('signUp');
-        const signInBtn = document.getElementById('signIn');
-        const container = document.getElementById('main');
-
-        if (signUpBtn && signInBtn && container) {
-            signUpBtn.addEventListener('click', () => {
-                container.classList.add("right-panel-active");
-            });
-
-            signInBtn.addEventListener('click', () => {
-                container.classList.remove("right-panel-active");
-            });
-        }
-    </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>

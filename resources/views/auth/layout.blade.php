@@ -48,6 +48,7 @@
 
 @yield('content')
 @yield('content1')
+@yield('style')
 
     <script>
         const signUpBtn = document.getElementById('signUp');

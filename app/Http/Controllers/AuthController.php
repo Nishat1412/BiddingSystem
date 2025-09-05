@@ -36,10 +36,10 @@ class AuthController extends Controller
             'email.required' => 'Email is required',
             'email.email' => 'Email must be a valid email address',
             'email.max' => 'Email may not be greater than 255 characters',
-            'password.min' => 'Password must be at least 8 characters',
+            'password.min' => 'Password must be at least 6 characters',
             
         ]);
-        
+
 
         DB::table('user_records')->insert([
             'name'       => $request->name,

@@ -24,6 +24,10 @@ Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.
 Route::get('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 Route::get('/admin/dashboard', [AdminAuthController::class, 'dashboard'])->name('admin.dashboard');
 
+Route::get('/admin/register', [AdminAuthController::class, 'showAdminRegister'])->name('adminregister.create');
+Route::post('/admin/register', [AdminAuthController::class, 'storeAdmin'])->name('adminregister.store');
+
+
 Route::get('/', function () {
     if (!session()->has('user_id')) {
         return redirect('/login');
@@ -47,6 +51,3 @@ Route::get('/feature2', function () {
     return view('feature2');
 });
 
-Route::get('/bidding', function () {
-    return view('bidding');
-});

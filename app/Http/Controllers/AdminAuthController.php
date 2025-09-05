@@ -13,6 +13,28 @@ class AdminAuthController extends Controller
         return view('admin.admin_login'); // Blade file
     }
 
+        public function showAdminRegister()
+    {
+        return view('admin.adminregister'); // create this blade file
+    }
+
+    public function storeAdmin(Request $request)
+{
+    $request->validate([
+        'email' => 'required|email|unique:admin_panel,email',
+        'password' => 'required|min:6|confirmed',
+    ]);
+
+    DB::table('admin_panel')->insert([
+        'email' => $request->email,
+        'password' => $request->password, // plain text for visibility
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+
+    return redirect()->back()->with('success', 'New admin registered successfully.');
+}
+
     public function login(Request $request)
     {
         $request->validate([
@@ -44,6 +66,6 @@ class AdminAuthController extends Controller
             return redirect()->route('admin.login')->with('error', 'Please login first.');
         }
 
-        return view('admin.admin_panel'); // dashboard page
+        return view('admin.dashboard'); // dashboard page
     }
 }

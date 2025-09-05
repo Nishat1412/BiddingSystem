@@ -2,20 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\AuthRequest;
-
 
 class AuthController extends Controller
 {
-    public function showLogin()
-    {
-        return view('auth.register');
-    }
+    
 
-    public function showRegister()
+     public function create()
     {
         return view('auth.register');
     }
@@ -58,4 +54,5 @@ class AuthController extends Controller
         Session::flush();
         return redirect()->route('login');
     }
+    
 }

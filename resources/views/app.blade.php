@@ -58,6 +58,10 @@
     <div class="row">
     @yield('content3')
     </div>
+    
+    <div class="row">
+    @yield('content4')
+    </div>
 
   
 <div class="d-flex flex-column min-vh-100">

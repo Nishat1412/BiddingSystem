@@ -1,0 +1,21 @@
+.custom-navbar {
+    background: linear-gradient(to right, #1b803c, #30c461);
+    color: white;
+}
+
+.custom-navbar .nav-link,
+.custom-navbar .navbar-brand,
+.custom-navbar .bi {
+    color: white !important;
+}
+
+
+body {
+    background: #f6f5f7;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding-top: 100px; 
+    padding-bottom: 50px;
+}
+
+

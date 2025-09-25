@@ -32,12 +32,12 @@
 
             <p class="para_icon">or use your email for registration</p>
             <div class="credentials">
-                <input type="text" name="name" placeholder="Name" required />
-                <input type="text" name="username" placeholder="Username" required />
-                <input type="email" name="email" placeholder="Email" required />
-                <input type="text" name="phone" placeholder="Phone" />
-                <input type="password" name="password" placeholder="Password" required />
-                <input type="password" name="password_confirmation" placeholder="Confirm Password" required />
+                <input type="text" name="name" placeholder="Name" required autocomplete="off"/>
+                <input type="text" name="username" placeholder="Username" required autocomplete="off" />
+                <input type="email" name="email" placeholder="Email" required autocomplete="off"/>
+                <input type="text" name="phone" placeholder="Phone" autocomplete="off"/>
+                <input type="password" name="password" placeholder="Password" required autocomplete="new-password" />
+                <input type="password" name="password_confirmation" placeholder="Confirm Password" required autocomplete="new-password"/>
                 <div class="button-wrapper">
                     <button type="submit" class="btn btn-success">SIGN UP</button>
                 </div>
@@ -65,8 +65,8 @@
             </div>
 
             <p class="para_icon">or use your email for sign in</p>
-            <input type="email" name="email" placeholder="Email" required />
-            <input type="password" name="password" placeholder="Password" required />
+            <input type="email" name="email" placeholder="Email" required autocomplete="off" />
+            <input type="password" name="password" placeholder="Password" required autocomplete="new-password" />
             <div class="button-wrapper">
                 <button type="submit" class="btn btn-primary">SIGN IN</button>
             </div>

@@ -30,14 +30,15 @@
                 Categories
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ url('/gadgets') }}">Gadgets</a>
-                <a class="dropdown-item" href="{{ url('/feature2') }}">Artwork</a>
-                <a class="dropdown-item" href="#">Memorabilia</a>
-                <a class="dropdown-item" href="#">Antiques and Collectibles</a>
-                 <a class="dropdown-item" href="#">Automobiles</a>
+                 <a class="dropdown-item" href="{{ url('/products') }}">All Products</a>
+                <a class="dropdown-item" href="{{ url('/products/gadgets') }}">Gadgets</a>
+                <a class="dropdown-item" href="{{ url('/products/artwork') }}">Artwork</a>
+                <a class="dropdown-item" href="{{ url('/products/memorabilia') }}">Memorabilia</a>
+                <a class="dropdown-item" href="{{ url('/products/antiques') }}">Antiques and Collectibles</a>
+                <a class="dropdown-item" href="{{ url('/products/automobiles') }}">Automobiles</a>
             </div>
         </li>
-
+        
     </ul>
 </div>
             
@@ -57,6 +58,14 @@
 
     <div class="row">
     @yield('content3')
+    </div>
+    
+    <div class="row">
+    @yield('content4')
+    </div>
+
+    <div class="row">
+    @yield('content5')
     </div>
 
   

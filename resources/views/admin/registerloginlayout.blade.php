@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="{{asset('css/layout.css')}}" >
+<link rel="stylesheet" href="{{asset('css/registerloginlayout.css')}}" >
 </head>
 <body>
    <nav class="navbar navbar-expand-lg fixed-top custom-navbar">
@@ -28,19 +28,18 @@
                 Categories
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ url('/products') }}">All Products</a>
-                 <a class="dropdown-item" href="{{ url('/products/gadgets') }}">Gadgets</a>
-                <a class="dropdown-item" href="{{ url('/products/artwork') }}">Artwork</a>
-                <a class="dropdown-item" href="{{ url('/products/memorabilia') }}">Memorabilia</a>
-                <a class="dropdown-item" href="{{ url('/products/antiques') }}">Antiques and Collectibles</a>
-                <a class="dropdown-item" href="{{ url('/products/automobiles') }}">Automobiles</a>
+                <a class="dropdown-item" href="{{ url('/gadgets') }}">Gadgets</a>
+                <a class="dropdown-item" href="{{ url('/feature2') }}">Artwork</a>
+                <a class="dropdown-item" href="#">Memorabilia</a>
+                <a class="dropdown-item" href="#">Antiques and Collectibles</a>
+                 <a class="dropdown-item" href="#">Automobiles</a>
             </div>
         </li>
     </ul>
 </div>
             
    <div class="form-inline my-2 my-lg-0">
-    <a href="{{ url('/register') }}" class="text-white mx-2" title="Register">
+    <a href="#" class="text-white mx-2" title="Add Admin">
         <i class="bi bi-person-plus" style="font-size: 1.5rem;"></i>
     </a>
    
@@ -48,24 +47,6 @@
 </nav>
 
 @yield('content')
-@yield('content1')
-@yield('style')
-
-    <script>
-        const signUpBtn = document.getElementById('signUp');
-        const signInBtn = document.getElementById('signIn');
-        const container = document.getElementById('main');
-
-        if (signUpBtn && signInBtn && container) {
-            signUpBtn.addEventListener('click', () => {
-                container.classList.add("right-panel-active");
-            });
-
-            signInBtn.addEventListener('click', () => {
-                container.classList.remove("right-panel-active");
-            });
-        }
-    </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>

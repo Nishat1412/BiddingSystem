@@ -1,4 +1,4 @@
-@extends('auth.layout')
+@extends('admin.registerloginlayout')
 @section('title') Admin Login @endsection
 @section('content')
 <div class="container" id="main">
@@ -29,7 +29,7 @@
             <input type="password" name="password" placeholder="Password" required />
 
             <div class="button-wrapper">
-                <button type="submit" class="btn btn-primary">LogIn</button>
+                <button type="submit" class="btn btn-primary">Log in to Dashboard</button>
             </div>
         </form>
     </div>
@@ -46,41 +46,3 @@
 </div>
 @endsection
 
-@section('style')
-    <style>
-        #main {
-        min-height: 70vh;     
-    }   
-
-    .sign-in-container {
-        background: #fff;
-        padding: 40px;
-        border-radius: 15px;
-        max-width: 350px;
-        text-align: center;
-        
-    }
-    .social-container a {
-        margin: 0 10px;
-        font-size: 18px;
-        color: #333;
-    }
-    .para_icon {
-        margin: 15px 0;
-        font-size: 14px;
-        color: #555;
-    }
-    .sign-in-container input[type="email"],
-    .sign-in-container input[type="password"] {
-        width: 80%;           /* slightly narrower */
-        padding: 8px 10px;    /* smaller padding */
-        font-size: 14px;      /* smaller text */
-        margin-bottom: 10px;  /* less space between inputs */
-        border-radius: 6px;   /* slightly rounded corners */
-        border: 1px solid #ccc;
-        box-sizing: border-box; /* include padding in width */
-    }
-    
-</style>
-
-@endsection

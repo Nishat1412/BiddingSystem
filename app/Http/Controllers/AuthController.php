@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\AuthRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 
 class AuthController extends Controller
@@ -19,6 +21,14 @@ class AuthController extends Controller
     {
         return view('auth.register');
     }
+    public function dashboard()
+{
+    if (!Auth::guard('user_record')->check()) {
+        return redirect()->route('login')->with('error', 'Please login first.');
+    }
+
+    return view('dashboard');
+}
 
     public function store(AuthRequest $request)
     {
@@ -27,7 +37,7 @@ class AuthController extends Controller
             'username'   => $request->username,
             'email'      => $request->email,
             'phone'      => $request->phone,
-            'password'   => $request->password, 
+            'password'   => Hash::make($request->password), 
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -36,26 +46,25 @@ class AuthController extends Controller
     }
 
     public function login(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+{
+    $credentials = $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
 
-        $user = DB::table('user_records')->where('email', $request->email)->first();
-
-        if ($user && $request->password === $user->password) {
-            Session::put('user_id', $user->id);
-            Session::put('username', $user->username);
-            return redirect('/home');
-        }
-
-        return back()->with('error', 'Invalid credentials');
+    if (Auth::guard('user_record')->attempt($credentials)) {
+        $request->session()->regenerate();
+        return redirect()->route('dashboard');
     }
+
+    return back()->with('error', 'Invalid credentials');
+}
+
 
     public function logout()
     {
-        Session::flush();
-        return redirect()->route('login');
+        Auth::guard('user_record')->logout();
+        
+        return redirect()->route('login')->with('success', 'Logged out successfully.');
     }
 }

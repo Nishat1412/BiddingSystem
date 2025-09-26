@@ -4,7 +4,7 @@
 }
     
     .min-vh-100 {
-    min-height: 10vh !important;
+    min-height: 35vh !important;
 }
 
 .form-inline a:hover i {
@@ -12,11 +12,12 @@
         transition: color 0.2s;
     }
 
-.navbar,
+.navbar:not(.user_navbar .navbar),
 footer {
     background: linear-gradient(to right, #1b803c, #30c461) !important;
-     color: white;
+    color: white;
 }
+
 
 footer {
     background: linear-gradient(to right, #1b803c, #30c461) !important;
@@ -26,6 +27,17 @@ footer {
     left: 0;
     width: 100%;
     z-index: 999;
+    margin-top: 20px;
+}
+
+.container.mt-5 {
+    background: linear-gradient(to right, #f0f0f0, #ffffff); 
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.15),
+                0 10px 10px rgba(0,0,0,0.1);
+    padding: 40px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .container.py-5 {
@@ -169,4 +181,29 @@ body.modal-open {
     border-color: #1e7e34 !important;
 }
 
+.user_navbar {
+    width: 100%;
+}
+
+.user_navbar .navbar {
+    background-color: rgb(202, 201, 201) !important; /* override bootstrap light */
+    border-radius: 0;                  /* remove rounded corners */
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.user_navbar .navbar-brand {
+    color: white !important;           /* brand text color */
+    font-weight: bold;
+}
+
+.user_navbar .navbar span {
+    color: white;                      /* username color */
+    font-weight: 500;
+}
+
+.user_navbar .btn-danger {
+    font-size: 0.9rem;
+    padding: 5px 12px;
+}
 

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\AuthRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 
 class AuthController extends Controller
@@ -27,22 +28,20 @@ class AuthController extends Controller
         return redirect()->route('login')->with('error', 'Please login first.');
     }
 
-    return view('dashboard');
+    return view('user.dashboard');
 }
 
     public function store(AuthRequest $request)
     {
-        DB::table('user_records')->insert([
-            'name'       => $request->name,
-            'username'   => $request->username,
-            'email'      => $request->email,
-            'phone'      => $request->phone,
-            'password'   => Hash::make($request->password), 
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        session([
+        'pending_user' => $request->only([
+            'name','username','email','phone','password'
+        ])
+    ]);
 
-        return redirect()->route('login')->with('success', 'User created successfully.');
+    
+    return redirect()->route('upload.form')
+                     ->with('success', 'Please upload your documents to complete registration.');
     }
 
     public function login(Request $request)
@@ -54,7 +53,7 @@ class AuthController extends Controller
 
     if (Auth::guard('user_record')->attempt($credentials)) {
         $request->session()->regenerate();
-        return redirect()->route('dashboard');
+        return redirect()->route('user.dashboard');
     }
 
     return back()->with('error', 'Invalid credentials');
@@ -67,4 +66,64 @@ class AuthController extends Controller
         
         return redirect()->route('login')->with('success', 'Logged out successfully.');
     }
+
+    public function showUploadForm()
+{
+    if (!session()->has('pending_user')) {
+        return redirect()->route('register')
+            ->with('error', 'Please fill in your details first.');
+    }
+
+    return view('auth.upload-documents');
+}
+
+public function handleUpload(Request $request)
+{
+    if (!session()->has('pending_user')) {
+        return redirect()->route('register')->with('error', 'Session expired. Try again.');
+    }
+
+    $request->validate([
+        'identity_card' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
+        'cash_memo'     => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
+    ]);
+
+    $pending = session('pending_user');
+
+    DB::transaction(function () use ($pending, $request) {
+
+        $userId = DB::table('user_records')->insertGetId([
+            'name'       => $pending['name'],
+            'username'   => $pending['username'],
+            'email'      => $pending['email'],
+            'phone'      => $pending['phone'],
+            'password'   => Hash::make($pending['password']),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+       
+        $nidFile = $request->file('identity_card');
+        $nidFilename = time() . '_' . $nidFile->getClientOriginalName();
+        $nidFile->storeAs('', $nidFilename, 'identity'); 
+        $nidPath = $nidFilename; 
+
+      
+        $invoiceFile = $request->file('cash_memo');
+        $invoiceFilename = time() . '_' . $invoiceFile->getClientOriginalName();
+        $invoiceFile->storeAs('', $invoiceFilename, 'invoice'); 
+        $invoicePath = $invoiceFilename; 
+
+        DB::table('document_submissions')->insert([
+            'user_id'       => $userId,
+            'identity_card' => $nidPath,
+            'cash_memo'     => $invoicePath,
+            'created_at'    => now(),
+            'updated_at'    => now(),
+        ]);
+    });
+
+    session()->forget('pending_user');
+
+    return redirect()->route('login')->with('success', 'Registration complete. You may now log in.');
+}
 }

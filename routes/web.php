@@ -7,31 +7,25 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminAuthController;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
-
-Route::get('/user-records', [UserRecordController::class, 'index']);
-
-Route::get('/products', [ProductController::class, 'index']);
-
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
 
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register.create');
 Route::post('/register', [AuthController::class, 'store'])->name('register.store');
 
+Route::get('/upload-documents', [AuthController::class, 'showUploadForm'])->name('upload.form');
+Route::post('/upload-documents', [AuthController::class, 'handleUpload'])->name('upload.submit');
+
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
 
 Route::get('/admin/login', [AdminAuthController::class, 'showLogin'])->name('admin.login');
 Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
 Route::get('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 Route::get('/admin/dashboard', [AdminAuthController::class, 'dashboard'])->name('admin.dashboard');
 
-Route::get('/admin/register', [AdminAuthController::class, 'showAdminRegister'])->name('adminregister.create');
-Route::post('/admin/register', [AdminAuthController::class, 'storeAdmin'])->name('adminregister.store');
+//Route::get('/admin/register', [AdminAuthController::class, 'showAdminRegister'])->name('adminregister.create');
+//Route::post('/admin/register', [AdminAuthController::class, 'storeAdmin'])->name('adminregister.store');
 
 
 Route::get('/app', function () {
@@ -39,13 +33,8 @@ Route::get('/app', function () {
 });
 
 Route::get('/home', function () {
-    return view('home'); 
+    return view('user.home'); 
 });
-
-
-
-//Route::post('/admin/products/store', [ProductController::class, 'store'])
-   // ->name('admin.products.store');
 
 
 Route::get('/products/gadgets', [ProductController::class, 'gadget'])->name('products.gadgets');
@@ -54,24 +43,26 @@ Route::get('/products/antiques', [ProductController::class, 'antique'])->name('p
 Route::get('/products/memorabilia', [ProductController::class, 'memorabilia'])->name('products.memorabilia');
 Route::get('/products/automobiles', [ProductController::class, 'automobile'])->name('products.automobiles');
 
-
-
-// Show all products
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 
 
 Route::middleware(['auth:user_record'])->group(function(){
-// Create new product
+
+Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('user.dashboard');
+
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
 Route::post('/products', [ProductController::class, 'store'])->name('products.store');
 
-// Edit product
+
 Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
 
-// Delete product
-Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
 
-Route::get('/products/{id}/upload-documents', [ProductController::class, 'uploadDocumentsForm'])->name('products.uploadDocuments');
-Route::post('/products/{id}/upload-documents', [ProductController::class, 'storeDocuments'])->name('products.storeDocuments');
+Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
 });
+
+Route::post('/products/{id}/request-auction', [ProductController::class,'requestAuction'])
+     ->name('products.requestAuction');
+
+Route::post('/admin/products/{id}/auction-action', [AdminAuthController::class,'auctionAction'])
+     ->name('admin.auctionAction');

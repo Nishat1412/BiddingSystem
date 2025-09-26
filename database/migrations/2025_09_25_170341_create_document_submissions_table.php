@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('auction_submissions', function (Blueprint $table) {
+        Schema::create('document_submissions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('identity_card');
             $table->string('cash_memo');
-            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->timestamps();
 
-    $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+    $table->foreign('user_id')->references('id')->on('user_records')->onDelete('cascade');
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('auction_submissions');
+        Schema::dropIfExists('document_submissions');
     }
 };

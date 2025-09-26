@@ -1,4 +1,4 @@
-@extends('app')
+@extends('user.app')
 @section('title') Home @endsection
 @section('content3')
 <div class="container mt-4">

@@ -46,13 +46,25 @@ return [
             'throw' => false,
             'report' => false,
         ],
+            'uploads' => [
+            'driver' => 'local',
+            'root' => public_path('uploads'), 
+            'url' => env('APP_URL').'/uploads',
+            'visibility' => 'public',
+        ],
+            'identity' => [
+            'driver' => 'local',
+            'root' => public_path('identity'),  
+            'url' => env('APP_URL').'/identity',
+            'visibility' => 'public',
+        ],
 
-        'uploads' => [
-        'driver' => 'local',
-        'root' => public_path('uploads'), // This points directly to the public/uploads folder
-        'url' => env('APP_URL').'/uploads',
-        'visibility' => 'public',
-    ],
+        'invoice' => [
+            'driver' => 'local',
+            'root' => public_path('invoice'), 
+            'url' => env('APP_URL').'/invoice',
+            'visibility' => 'public',
+        ],
 
         's3' => [
             'driver' => 's3',

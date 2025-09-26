@@ -39,7 +39,8 @@
                 <input type="password" name="password" placeholder="Password" required autocomplete="new-password" />
                 <input type="password" name="password_confirmation" placeholder="Confirm Password" required autocomplete="new-password"/>
                 <div class="button-wrapper">
-                    <button type="submit" class="btn btn-success">SIGN UP</button>
+                 <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadModal"> SIGN UP </button>-->
+                <button type="submit" class="btn btn-success">SIGN UP</button>
                 </div>
             </div>
         </form>
@@ -65,8 +66,8 @@
             </div>
 
             <p class="para_icon">or use your email for sign in</p>
-            <input type="email" name="email" placeholder="Email" required autocomplete="off" />
-            <input type="password" name="password" placeholder="Password" required autocomplete="new-password" />
+            <input type="email" name="email" placeholder="Email" required  />
+            <input type="password" name="password" placeholder="Password" required  />
             <div class="button-wrapper">
                 <button type="submit" class="btn btn-primary">SIGN IN</button>
             </div>

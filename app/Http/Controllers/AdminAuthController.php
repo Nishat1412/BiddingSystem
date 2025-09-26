@@ -68,4 +68,14 @@ class AdminAuthController extends Controller
 
         return view('admin.dashboard'); // dashboard page
     }
+
+    public function auctionAction(Request $request, $id)
+    {
+        $request->validate(['action' => 'required|in:approved,rejected']);
+        DB::table('products')->where('id', $id)
+            ->update(['auction_status' => $request->action]);
+
+        return back()->with('msg','Auction request '.$request->action);
+    }
 }
+

@@ -1,12 +1,25 @@
-.custom-navbar {
-    background: linear-gradient(to right, #1b803c, #30c461);
-    color: white;
+.mt-5, .my-5 {
+    margin-top: 2rem !important;
+    background-color: whitesmoke;
+}
+    
+    .min-vh-100 {
+    min-height: 10vh !important;
 }
 
-.custom-navbar .nav-link,
-.custom-navbar .navbar-brand,
-.custom-navbar .bi {
-    color: white !important;
+.form-inline a:hover i {
+        color: #01050c; 
+        transition: color 0.2s;
+    }
+
+.navbar {
+    position: fixed;      
+    top: 0;               
+    left: 0;               
+    width: 100%;           
+    z-index: 1000;         
+    background: linear-gradient(to right, #1b803c, #30c461) !important;
+    color: white;
 }
 
 

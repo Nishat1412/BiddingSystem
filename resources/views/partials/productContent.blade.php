@@ -1,8 +1,3 @@
-@extends('user.app')
-@section('title') Gadgets @endsection
-@section('content1')
-
-@include('partials.dashboardNavbar')
 <div class="container auction-section">
     <div class="row">
 
@@ -14,11 +9,13 @@
                 <button class="btn btn-sm quick-view-btn"
                     data-toggle="modal" data-target="#productModal"
                     data-name="{{ $product->product_name }}"
+                    data-id="{{ $product->id }}"
                     data-price="${{ $product->product_price }}"
                     data-description="{{ $product->product_description }}"
                     data-rating="{{ $product->product_rating }}"
-                    data-image=  "{{ asset('uploads/' . $product->product_image) }}" alt="{{ $product->product_name }}">
-                    <i class="fas fa-search"></i> Quick View
+                    data-image=  "{{ asset('uploads/' . $product->product_image) }}" alt="{{ $product->product_name }}"
+                    data-owner-id="{{ $product->user_id }}">               
+                         <i class="fas fa-search"></i> Quick View
                 </button>
 
                 <!-- Product Image -->
@@ -29,13 +26,22 @@
                     <h5 class="card-title">{{ $product->product_name }}</h5>
                     <p class="card-text">Current bid: ${{ $product->product_price }}</p>
 
+                    <!-- Edit/Delete Buttons -->
+                     @if (Auth()->guard('user_record')->id() == $product->user_id)
+                    <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                    <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="d-inline">
+                        @csrf @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                    @endif
                 </div>
             </div>
         </div>
         @endforeach
+
     </div>
 
-   
+    <a href="{{ route('products.create') }}" class="btn btn-success mt-3">+ Add New Product</a>
 </div>
 
 <!-- Product Modal -->
@@ -47,12 +53,9 @@
       <p class="mb-1">Rating: <span class="modal-rating"></span> ⭐</p>
       <p class="modal-description mb-2"></p>
       <h5 class="modal-price mb-3"></h5>
+     <button type="button" class="btn btn-bid request-auction">
+    <i class="fas fa-gavel"></i> Add to Auction
+    </button>
     </div>
   </div>
 </div>
-@endsection
-
-@section('scripts')
-    <script src="{{ asset('js/product-modal.js') }}"></script>
-@endsection
-

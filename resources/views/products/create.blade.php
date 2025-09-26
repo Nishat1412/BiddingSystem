@@ -1,4 +1,4 @@
-@extends('app')
+@extends('user.app')
 @section('title', 'Add Product')
 @section('content1')
 <div class="container">

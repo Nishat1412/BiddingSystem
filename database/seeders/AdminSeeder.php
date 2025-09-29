@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\Admin;
+use Illuminate\Support\Facades\Hash;
 
 
 class AdminSeeder extends Seeder
@@ -16,15 +17,15 @@ class AdminSeeder extends Seeder
     public function run(): void
     {
         DB::table('admin_panel')->insert([[
-
-           'email' => 'admin1@bidmaster.com',
-            'password' => 'password123',
+           
+           'email' => 'admin1@bidgmail.com',
+            'password' => Hash::make('123456'),
             'created_at' => now(),
             'updated_at' => now(),
         ], [
-
-            'email' => 'admin2@bidmaster.com',
-            'password' => 'password1234',
+            
+            'email' => 'admin2@bidgmail.com',
+            'password' => Hash::make('12345678'),
             'created_at' => now(),
             'updated_at' => now(),
 

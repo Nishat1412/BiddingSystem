@@ -1,5 +1,5 @@
 @extends('user.app')
-@section('title') Gadgets @endsection
+@section('title') All Products @endsection
 @section('content1')
 
 @include('partials.dashboardNavbar')

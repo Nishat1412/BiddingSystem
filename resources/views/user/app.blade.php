@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
     @auth('user_record')
         <meta name="user-id" content="{{ Auth::guard('user_record')->id() }}">
     @endauth
@@ -19,7 +20,7 @@
 <body>
 
     @include('partials.header')
-
+    
     @yield('content1')
     
    <div class="row">

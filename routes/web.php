@@ -21,8 +21,22 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/admin/login', [AdminAuthController::class, 'showLogin'])->name('admin.login');
 Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
-Route::get('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
-Route::get('/admin/dashboard', [AdminAuthController::class, 'dashboard'])->name('admin.dashboard');
+
+
+
+Route::middleware(['auth:admin'])->group(function(){
+    Route::get('/admin/dashboard', [AdminAuthController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+    Route::post('/admin/products/{id}/auction-action', [AdminAuthController::class,'auctionAction'])->name('admin.auctionAction');
+    
+    Route::get('/admin/pending-auctions', [AdminAuthController::class, 'pendingAuctions'])
+         ->name('admin.pendingAuctions');
+
+    // Generate product PDF
+    Route::get('/admin/product-pdf/{id}', [AdminAuthController::class, 'productPdf'])
+         ->name('admin.productPdf');   
+
+});
 
 //Route::get('/admin/register', [AdminAuthController::class, 'showAdminRegister'])->name('adminregister.create');
 //Route::post('/admin/register', [AdminAuthController::class, 'storeAdmin'])->name('adminregister.store');
@@ -59,10 +73,10 @@ Route::put('/products/{id}', [ProductController::class, 'update'])->name('produc
 
 
 Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
-});
 
 Route::post('/products/{id}/request-auction', [ProductController::class,'requestAuction'])
      ->name('products.requestAuction');
+});
 
-Route::post('/admin/products/{id}/auction-action', [AdminAuthController::class,'auctionAction'])
-     ->name('admin.auctionAction');
+
+

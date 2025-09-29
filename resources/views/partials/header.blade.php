@@ -14,23 +14,39 @@
                aria-haspopup="true" aria-expanded="false">
                 Categories
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                 <a class="dropdown-item" href="{{ url('/products') }}">All Products</a>
-                <a class="dropdown-item" href="{{ url('/products/gadgets') }}">Gadgets</a>
-                <a class="dropdown-item" href="{{ url('/products/artwork') }}">Artwork</a>
-                <a class="dropdown-item" href="{{ url('/products/memorabilia') }}">Memorabilia</a>
-                <a class="dropdown-item" href="{{ url('/products/antiques') }}">Antiques and Collectibles</a>
-                <a class="dropdown-item" href="{{ url('/products/automobiles') }}">Automobiles</a>
-            </div>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <a class="dropdown-item" href="{{ url('/products') }}">
+        <i class="fas fa-box-open mr-2"></i> All Products
+    </a>
+    <a class="dropdown-item" href="{{ url('/products/gadgets') }}">
+        <i class="fas fa-microchip mr-2"></i> Gadgets
+    </a>
+    <a class="dropdown-item" href="{{ url('/products/artwork') }}">
+        <i class="fas fa-paint-brush mr-2"></i> Artwork
+    </a>
+    <a class="dropdown-item" href="{{ url('/products/memorabilia') }}">
+        <i class="fas fa-star mr-2"></i> Memorabilia
+    </a>
+    <a class="dropdown-item" href="{{ url('/products/antiques') }}">
+        <i class="fas fa-hourglass-half mr-2"></i> Antiques &amp; Collectibles
+    </a>
+    <a class="dropdown-item" href="{{ url('/products/automobiles') }}">
+        <i class="fas fa-car-side mr-2"></i> Automobiles
+    </a>
+</div>
         </li>
         
     </ul>
 </div>
             
-   <div class="form-inline my-2 my-lg-0">
-    <a href="{{ url('/register') }}" class="text-white mx-2" title="Register">
-        <i class="bi bi-person-plus" style="font-size: 1.5rem;"></i>
+      <div class="form-inline my-2 my-lg-0">
+    <a href="{{ url('/register') }}" class="text-white mx-2" title="Register">
+        <i class="fas fa-user-circle" style="font-size: 1.5rem; color: #fff;"></i>
+    </a>
+</div>
+
+
     </a>
    
 </div>
-    </nav>
+ </nav>

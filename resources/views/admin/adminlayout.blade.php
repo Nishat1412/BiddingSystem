@@ -39,12 +39,12 @@
     </ul>
 </div>
             
-   <div class="form-inline my-2 my-lg-0">
-    <a href="{{ url('/admin/register') }}" class="text-white mx-2" title="Add Admin">
-        <i class="bi bi-person-plus" style="font-size: 1.5rem;"></i>
+<div class="form-inline my-2 my-lg-0">
+    <a href="{{ url('/admin/dashboard') }}" class="text-white mx-2" title="Dashboard">
+        <i class="fas fa-gavel" style="font-size: 1.5rem;"></i> Dashboard
     </a>
-   
 </div>
+
 </nav>
 
 @yield('content')

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class AdminAuthController extends Controller
 {
@@ -12,28 +14,6 @@ class AdminAuthController extends Controller
     {
         return view('admin.admin_login'); // Blade file
     }
-
-        public function showAdminRegister()
-    {
-        return view('admin.adminregister'); // create this blade file
-    }
-
-    public function storeAdmin(Request $request)
-{
-    $request->validate([
-        'email' => 'required|email|unique:admin_panel,email',
-        'password' => 'required|min:6|confirmed',
-    ]);
-
-    DB::table('admin_panel')->insert([
-        'email' => $request->email,
-        'password' => $request->password, // plain text for visibility
-        'created_at' => now(),
-        'updated_at' => now(),
-    ]);
-
-    return redirect()->back()->with('success', 'New admin registered successfully.');
-}
 
     public function login(Request $request)
     {
@@ -43,30 +23,28 @@ class AdminAuthController extends Controller
         ]);
 
         // fetch from admin_panel table
-        $admin = DB::table('admin_panel')->where('email', $request->email)->first();
+       $credentials = $request->only('email', 'password');
 
-        if ($admin && $request->password === $admin->password) {
-            Session::put('admin_id', $admin->id);
-            Session::put('admin_email', $admin->email);
+        // Attempt to log in using the 'admin' guard.
+        // This automatically handles password hashing and verification.
+        if (Auth::guard('admin')->attempt($credentials)) {
+            $request->session()->regenerate();
             return redirect()->route('admin.dashboard');
         }
 
-        return back()->with('error', 'Invalid credentials');
+        return back()->with('error', 'The provided credentials do not match our records.');
     }
 
     public function logout()
     {
-        Session::flush();
-        return redirect()->route('admin.login');
+        Auth::guard('admin')->logout();
+    
+        return redirect()->route('admin.login')->with('msg', 'Logged out successfully.');
     }
 
     public function dashboard()
     {
-        if (!Session::has('admin_id')) {
-            return redirect()->route('admin.login')->with('error', 'Please login first.');
-        }
-
-        return view('admin.dashboard'); // dashboard page
+        return view('admin.dashboard'); 
     }
 
     public function auctionAction(Request $request, $id)
@@ -77,5 +55,67 @@ class AdminAuthController extends Controller
 
         return back()->with('msg','Auction request '.$request->action);
     }
+
+    public function productPdf($id)
+    {
+        $product = DB::table('products')->where('id', $id)->first();
+
+        if (!$product) {
+            abort(404, "Product not found");
+        }
+
+        $pdf = Pdf::loadView('admin.product_pdf', compact('product'));
+
+        return $pdf->download("product_{$id}.pdf");
+    }
+
+    public function pendingAuctions()
+    {
+    $products = DB::table('products')
+        ->where('auction_status', 'pending')
+        ->leftJoin('document_submissions', 'document_submissions.user_id', '=', 'products.user_id')
+        ->select(
+            'products.*',
+            'document_submissions.identity_card',
+            'document_submissions.cash_memo'
+        )
+        ->get();
+
+    return view('admin.pending_auctions', compact('products'));
+    }
+
+    public function generateDocumentPdf($type, $user_id)
+{
+    $doc = DB::table('document_submissions')->where('user_id', $user_id)->first();
+    if (!$doc) abort(404, 'Documents not found');
+
+    if ($type === 'nid') {
+        $file = $doc->identity_card;
+        $folder = public_path('identity/');
+        $title = 'User NID - ' . $user_id;
+    } elseif ($type === 'invoice') {
+        $file = $doc->cash_memo;
+        $folder = public_path('invoice/');
+        $title = 'User Invoice - ' . $user_id;
+    } else {
+        abort(400, 'Invalid document type');
+    }
+
+    $filePath = $folder . $file;
+
+    $pdf = Pdf::loadView('admin.document_pdf', [
+        'filePath' => $filePath,
+        'type' => $title
+    ]);
+
+    $pdf->setOption('title', $title);
+
+
+    // return $pdf->download($type . '_' . $user_id . '.pdf');
+    return $pdf->stream($type . '_' . $user_id . '.pdf');
+    
+}
+
+    
 }
 

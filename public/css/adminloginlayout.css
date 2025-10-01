@@ -1,21 +1,132 @@
-.custom-navbar {
-    background: linear-gradient(to right, #1b803c, #30c461);
+html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+   font-family: 'Playfair Display', serif;
+   /*background: #eae5d6;*/
+}
+
+.mt-5, .my-5 {
+    margin-top: 2rem !important;
+    background-color: whitesmoke;
+} 
+    
+    .min-vh-100 {
+    min-height: 35vh !important;
+}
+
+.form-inline a:hover i {
+        color: #01050c; 
+        transition: color 0.2s;
+    }
+
+/* Apply black only to main navbar, not second */
+.main-navbar {
+    background: #000 !important;
     color: white;
 }
 
-.custom-navbar .nav-link,
-.custom-navbar .navbar-brand,
-.custom-navbar .bi {
-    color: white !important;
+.navbar-brand, .ml-auto.d-flex.align-items-center{
+    color: rgb(245, 242, 242) !important;
+    font-weight: bold;
+    margin-left: 10px;
+    
+}
+
+/* === NEW COLOR THEME to match the reference image === */
+.main-navbar {
+    background-color: #000;           /* deep black for top bar */
+    border-bottom: 1px solid #333;
+}
+.main-navbar .navbar-brand {
+    color: #f5c542 !important;        /* gold brand text */
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+}
+.main-navbar .navbar-brand:hover {
+    color: #ffd966 !important;
+}
+.main-navbar .form-control {
+    background: #fff;
+    border-radius: 30px;
+    border: none;
+}
+
+/* Second navbar: warm gold background */
+.second-navbar {
+    background-color: #cda84b;        /* rich gold */
+}
+
+.second-navbar .nav-link {
+    color: #fff !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0 10px;
+    transition: color 0.2s;
+}
+
+/* Adjust search input focus */
+.main-navbar .form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(205,168,75,0.25);
 }
 
 
-body {
-    background: #f6f5f7;
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding-top: 100px; 
-    padding-bottom: 50px;
+/* === Icon Colors for Both Navbars === */
+.main-navbar i,
+.second-navbar i {
+    color: #f5c542;            /* bright gold */
+    transition: color 0.2s ease-in-out;
+}
+
+/* Darker gold on hover */
+.main-navbar i:hover,
+.second-navbar i:hover,
+.dropdown-item:hover i {
+    color: #c6931e  !important  ;        /* deeper gold */
+}
+
+.dropdown-menu .dropdown-item i {
+    color: #000;
+}
+.dropdown-menu .dropdown-item:hover i {
+    color: #c6931e;
+}
+
+.container.mt-5 {
+    background: linear-gradient(to right, #f0f0f0, #ffffff); 
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.15),
+                0 10px 10px rgba(0,0,0,0.1);
+    padding: 40px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.container.py-5 {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+                0 10px 10px rgba(0,0,0,0.22);
+    padding: 100px;
+    margin: 50px auto;
+    
+}
+.container.py-4{
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+                0 10px 10px rgba(0,0,0,0.22);
+    padding: 50px;
+    margin: 50px auto;
+}
+
+#navbarDropdown {
+    color: white !important;
+}
+
+.dropdown-item:active,
+.dropdown-item:focus {
+     
+    color: #fff !important;               
 }
 
 
@@ -30,6 +141,8 @@ body {
     max-width: 80%;
     min-height: 550px;
     display: flex;
+     margin-top: 2rem;
+    margin-bottom: 3rem;
 }
 
 .form-container {
@@ -57,7 +170,7 @@ body {
 }
 
 .overlay {
-    background: linear-gradient(to right, #00b09b, #96c93d);
+    background: linear-gradient(to right, #f5c542, #25200f);
     color: white;
     position: relative;
     left: -100%;
@@ -99,24 +212,17 @@ form input {
 }
 
 .btn-primary {
-    background-color: #03b855 !important; 
-    border-color: #03b855 !important;
+    background-color: #25200f !important; 
+    border-color: #25200f !important;
 }
 
-.btn-primary:hover {
-    background-color: #098f45 !important; 
-    border-color: #098f45 !important;
-}
 
 .btn-success {
-    background-color: #03b855 !important; 
-    border-color: #03b855 !important;
+   background-color: #25200f !important; 
+    border-color: #25200f !important;
 }
 
-.btn-success:hover {
-    background-color: #098f45 !important; 
-    border-color: #098f45 !important;
-}
+
 
 .heading-center{
     display: flex;
@@ -190,3 +296,16 @@ form input {
         padding: 10px 40px;
         border-radius: 20px;
     }
+
+    
+
+
+
+
+
+
+
+
+
+
+    

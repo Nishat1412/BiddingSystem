@@ -1,4 +1,17 @@
 
+    document.addEventListener("DOMContentLoaded", function () {
+        const deleteForms = document.querySelectorAll(".delete-form");
+
+        deleteForms.forEach(function (form) {
+            form.addEventListener("submit", function (e) {
+                e.preventDefault(); // Stop form submission
+                if (confirm("Are you sure you want to delete this product?")) {
+                    form.submit(); // Submit form if user confirms
+                }
+            });
+        });
+    });
+
 $('#productModal').on('show.bs.modal', function (e) {
    var button = $(e.relatedTarget);
    var productId = button.data('id');
@@ -25,14 +38,15 @@ $('#productModal').on('show.bs.modal', function (event) {
     var modal = $(this);
     var scrollY;
 
-    scrollY = window.scrollY;
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.left = '0';
-    document.body.style.right = '0';
-    document.body.style.width = '100%';
+    var scrollY = -parseInt(document.body.style.top || '0');
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
     document.body.style.overflow = 'hidden';
-    
+    window.scrollTo(0, scrollY); 
+
     modal.find('.modal-title').text(button.data('name'));
     modal.find('.modal-price').text(button.data('price'));
     modal.find('.modal-description').text(button.data('description'));

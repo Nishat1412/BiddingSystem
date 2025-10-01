@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserRecordController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\AuctionController;
 
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -21,11 +22,47 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/admin/login', [AdminAuthController::class, 'showLogin'])->name('admin.login');
 Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
-Route::get('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
-Route::get('/admin/dashboard', [AdminAuthController::class, 'dashboard'])->name('admin.dashboard');
+
+
+
+Route::middleware(['auth:admin'])->group(function(){
+    Route::get('/admin/dashboard', [AdminAuthController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+    Route::post('/admin/products/{id}/auction-action', [AdminAuthController::class,'auctionAction'])->name('admin.auctionAction');
+    
+    Route::get('/admin/pending-auctions', [AdminAuthController::class, 'pendingAuctions'])->name('admin.pendingAuctions');
+
+    Route::get('/admin/product-pdf/{id}', [AdminAuthController::class, 'productPdf'])->name('admin.productPdf');   
+
+    Route::get('/admin/document-pdf/{type}/{user_id}', [AdminAuthController::class, 'generateDocumentPdf'])->name('admin.generateDocumentPdf') ;
+    //Route::post('/auction/product/{productId}', [AuctionController::class, 'handleUnifiedAction'])->name('auctions.unified.action');
+
+
+    Route::post('/admin/approve-product/{id}', [AuctionController::class, 'approveProduct'])->name('approve.product');
+
+    Route::get('/auctions', [AuctionController::class, 'index'])->name('auctions.index');
+   
+    //Route::post('/auctions/{product}/start', [AuctionController::class, 'startAuction'])->name('auctions.start');
+    //Route::post('/auctions/start-all/{category}', [AuctionController::class, 'startAll'])->name('auctions.startAll');
+    Route::post('/auctions/start-all/{category}', [AuctionController::class, 'startAll'])->name('auctions.startAll');
+
+
+    //Route::post('/auctions/start/{category}', [YourController::class, 'startCategoryAuction'])->name('auctions.start');
+   
+
+
+
+
+});
 
 //Route::get('/admin/register', [AdminAuthController::class, 'showAdminRegister'])->name('adminregister.create');
 //Route::post('/admin/register', [AdminAuthController::class, 'storeAdmin'])->name('adminregister.store');
+
+Route::get('/auctions/gadgets',        [AuctionController::class,'gadgets'])->name('auctions.gadgets');
+Route::get('/auctions/artwork',        [AuctionController::class,'artwork'])->name('auctions.artwork');
+Route::get('/auctions/antiques',       [AuctionController::class,'antiques'])->name('auctions.antiques');
+Route::get('/auctions/memorabilia',    [AuctionController::class,'memorabilia'])->name('auctions.memorabilia');
+Route::get('/auctions/automobiles',    [AuctionController::class,'automobiles'])->name('auctions.automobiles');
 
 
 Route::get('/app', function () {
@@ -59,10 +96,19 @@ Route::put('/products/{id}', [ProductController::class, 'update'])->name('produc
 
 
 Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+
+Route::post('/products/{id}/request-auction', [ProductController::class,'requestAuction'])->name('products.requestAuction');
+
+//Route::get('/auction/product/{productId}', [AuctionController::class, 'showUnifiedAuction'])->name('auctions.unified.show');
 });
 
-Route::post('/products/{id}/request-auction', [ProductController::class,'requestAuction'])
-     ->name('products.requestAuction');
 
-Route::post('/admin/products/{id}/auction-action', [AdminAuthController::class,'auctionAction'])
-     ->name('admin.auctionAction');
+
+
+// --- New Unified Auction Routes ---
+
+// This single route displays the auction page for a specific product
+//Route::get('/auction/product/{productId}', [AuctionController::class, 'showUnifiedAuction'])->name('auctions.unified.show');
+
+// This single route handles all POST requests (admin start/update and user bids)
+//Route::post('/auction/product/{productId}', [AuctionController::class, 'handleUnifiedAction'])->name('auctions.unified.action');

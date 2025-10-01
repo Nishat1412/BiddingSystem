@@ -2,7 +2,6 @@
 @section('title') Antiques and Collectibles @endsection
 
 @section('content1')
-    @include('partials.dashboardNavbar')
     @include('partials.productContent')
 @endsection
 

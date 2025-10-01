@@ -1,8 +1,8 @@
 @extends('user.app')
-@section('title') Gadgets @endsection
+@section('title') All Products @endsection
 @section('content1')
 
-@include('partials.dashboardNavbar')
+
 <div class="container auction-section">
     <div class="row">
 
@@ -18,7 +18,7 @@
                     data-description="{{ $product->product_description }}"
                     data-rating="{{ $product->product_rating }}"
                     data-image=  "{{ asset('uploads/' . $product->product_image) }}" alt="{{ $product->product_name }}">
-                    <i class="fas fa-search"></i> Quick View
+                      <i class="fas fa-eye mr-1"></i>
                 </button>
 
                 <!-- Product Image -->

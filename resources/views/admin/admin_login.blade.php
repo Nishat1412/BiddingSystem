@@ -1,4 +1,4 @@
-@extends('admin.registerloginlayout')
+@extends('admin.adminloginlayout')
 @section('title') Admin Login @endsection
 @section('content')
 <div class="container" id="main">

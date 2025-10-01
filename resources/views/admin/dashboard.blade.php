@@ -1,24 +1,25 @@
 @extends('admin.adminlayout')
 @section('title') Admin Dashboard @endsection
-@section('content')
-    <div class="admin_navbar">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-         Dashboard
-    </a>
-
-    <div class="ml-auto d-flex align-items-center">
-        <span class="mr-3">
-            {{ session('admin_email') }} 
-        </span>
-        <a href="{{ route('admin.logout') }}" class="btn btn-danger">Logout</a>
-    </div>
-    </nav>
-</div>
-@endsection
-
 @section('content1')
-<div class="container mt-5">
+<div class="pending-card card shadow-sm">
+    <!-- Card header (black top portion) -->
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="card-title mb-0 text-white">Pending Requests</h5>
+        <i class="bi bi-bell-fill text-warning"></i>
+    </div>
+
+    <!-- Card body -->
+    <div class="card-body">
+        <p class="card-text">You have pending auction requests that need approval.</p>
+        <a href="{{ route('admin.pendingAuctions') }}" class="btn btn-primary btn-view">
+            View Pending Auctions
+        </a>
+    </div>
+</div>
+
+
+
+<!--
 <h3>Pending Auction Requests</h3>
     <table class="table table-bordered">
       <thead>
@@ -52,6 +53,6 @@
         </tr>
         @endforeach
       </tbody>
-    </table>
-</div>
+    </table>-->
+
 @endsection

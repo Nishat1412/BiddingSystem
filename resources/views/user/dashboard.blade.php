@@ -8,8 +8,6 @@
 </div>-->
 
 
-@include('partials.dashboardNavbar')
-
 <div class="container mt-5">
     <h3>Your Listed Products</h3>
     <table class="table table-bordered">

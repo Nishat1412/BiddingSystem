@@ -2,7 +2,6 @@
 @section('title') Memorabilia @endsection
 
 @section('content1')
-    @include('partials.dashboardNavbar')
     @include('partials.productContent')
 @endsection
 

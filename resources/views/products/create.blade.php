@@ -1,8 +1,8 @@
 @extends('user.app')
 @section('title', 'Add Product')
 @section('content1')
-<div class="container">
-    <h2 class="mb-4">Add New Product</h2>
+<div class="container-create">
+    <h3 class="heading mb-4">Add New Product</h3>
 
     @if ($errors->any())
         <div class="alert alert-danger">

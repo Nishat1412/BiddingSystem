@@ -15,7 +15,8 @@
                     data-rating="{{ $product->product_rating }}"
                     data-image=  "{{ asset('uploads/' . $product->product_image) }}" alt="{{ $product->product_name }}"
                     data-owner-id="{{ $product->user_id }}">               
-                         <i class="fas fa-search"></i> Quick View
+                         <i class="fas fa-eye mr-1"></i>
+                         
                 </button>
 
                 <!-- Product Image -->
@@ -28,10 +29,15 @@
 
                     <!-- Edit/Delete Buttons -->
                      @if (Auth()->guard('user_record')->id() == $product->user_id)
-                    <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                     <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning btn-sm">
+                        <i class="fas fa-edit"></i>
+                    </a>
+
                     <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="d-inline">
                         @csrf @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash-alt"></i> 
+                        </button>
                     </form>
                     @endif
                 </div>
@@ -41,7 +47,9 @@
 
     </div>
 
-    <a href="{{ route('products.create') }}" class="btn btn-success mt-3">+ Add New Product</a>
+    @auth('user_record')
+    <a href="{{ route('products.create') }}" class="btn btn-success  add-product-btn">+ Add New Product</a>
+    @endauth
 </div>
 
 <!-- Product Modal -->

@@ -2,8 +2,8 @@
 @section('title', 'Edit Product')
 
 @section('content1')
-<div class="container">
-    <h2 class="mb-4">Edit Product</h2>
+<div class="container-create">
+    <h3 class="heading mb-4">Edit Product</h3>
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -60,7 +60,7 @@
             @endif
         </div>
 
-        <button type="submit" class="btn btn-primary">Update Product</button>
+        <button type="submit" class="btn btn-success">Update Product</button>
         @php
             $category = old('category', '');
             $categoryRoute = match(strtolower($category)) {

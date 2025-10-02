@@ -16,7 +16,21 @@
         </a>
     </div>
 </div>
+<div class="pending-card card shadow-sm">
+    <!-- Card header (black top portion) -->
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="card-title mb-0 text-white">Bid History</h5>
+        <i class="bi bi-bell-fill text-warning"></i>
+    </div>
 
+    <!-- Card body -->
+    <div class="card-body">
+        <p class="card-text">Check all the bid history here.</p>
+        <a href="#" class="btn btn-primary btn-view">
+            View Bid History
+        </a>
+    </div>
+</div>
 
 
 <!--

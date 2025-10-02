@@ -5,7 +5,6 @@
         <div class="col-sm-6 col-md-3 mb-4">
             <div class="card auction-card position-relative">
 
-                <!-- Quick View Button -->
                 <button class="btn btn-sm quick-view-btn"
                     data-toggle="modal" data-target="#productModal"
                     data-name="{{ $product->product_name }}"
@@ -19,7 +18,7 @@
                          
                 </button>
 
-                <!-- Product Image -->
+
                 <img src="{{ asset('uploads/' . $product->product_image) }}" alt="{{ $product->product_name }}">
 
 
@@ -27,7 +26,7 @@
                     <h5 class="card-title">{{ $product->product_name }}</h5>
                     <p class="card-text">Current bid: ${{ $product->product_price }}</p>
 
-                    <!-- Edit/Delete Buttons -->
+
                      @if (Auth()->guard('user_record')->id() == $product->user_id)
                      <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning btn-sm">
                         <i class="fas fa-edit"></i>
@@ -52,7 +51,7 @@
     @endauth
 </div>
 
-<!-- Product Modal -->
+
 <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content p-4 text-center">

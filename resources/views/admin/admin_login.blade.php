@@ -2,7 +2,6 @@
 @section('title') Admin Login @endsection
 @section('content')
 <div class="container" id="main">
-    <!-- ADMIN SIGN IN FORM -->
     <div class="form-container sign-in-container" style="width: 100%;">
         <form method="POST" action="{{ route('admin.login.submit') }}">
             @csrf
@@ -34,7 +33,6 @@
         </form>
     </div>
 
-    <!-- OVERLAY -->
     <div class="overlay-container">
         <div class="overlay">
             <div class="overlay-panel overlay-right">

@@ -2,7 +2,6 @@
 @section('title') Register @endsection
 @section('content')
 <div class="container" id="main">
-    <!-- SIGN UP FORM -->
     <div class="form-container sign-up-container">
         <form method="POST" action="{{ route('register.store') }}">
             @csrf
@@ -46,7 +45,6 @@
         </form>
     </div>
 
-    <!-- SIGN IN FORM -->
     <div class="form-container sign-in-container">
         <form method="POST" action="{{ route('login.submit') }}">
             @csrf
@@ -74,7 +72,7 @@
         </form>
     </div>
 
-    <!-- OVERLAY -->
+    
     <div class="overlay-container">
         <div class="overlay">
             <div class="overlay-panel overlay-left">

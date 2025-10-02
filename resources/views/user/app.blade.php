@@ -19,7 +19,7 @@
 </head>
 <body>
 
-  <!-- Navbar -->
+ 
     @auth('user_record')
          @include('partials.header')
         @include('partials.dashboardNavbar')

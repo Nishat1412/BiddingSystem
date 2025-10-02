@@ -9,13 +9,39 @@ use Carbon\Carbon;
 class AuctionController extends Controller
 {
     private function updateExpiredAuctions()
-    {
-        $now = now();
-        DB::table('auctions')
-            ->where('status', 'active')
-            ->where('end_time', '<', $now)
-            ->update(['status' => 'finished']);
+{
+    $now = now();
+
+    $expiredAuctions = DB::table('auctions')
+        ->where('status', 'active')
+        ->where('end_time', '<', $now)
+        ->get();
+
+    foreach ($expiredAuctions as $auction) {
+        $highestBid = DB::table('bids')
+            ->where('auction_id', $auction->id)
+            ->orderBy('bid_amount', 'desc')
+            ->first();
+
+        if ($highestBid) {
+            DB::table('auctions')
+                ->where('id', $auction->id)
+                ->update([
+                    'status'      => 'finished',
+                    'winner_id'   => $highestBid->user_record_id,
+                    'current_bid' => $highestBid->bid_amount,
+                    'updated_at'  => $now,
+                ]);
+        } else {
+            DB::table('auctions')
+                ->where('id', $auction->id)
+                ->update([
+                    'status'     => 'finished',
+                    'updated_at' => $now,
+                ]);
+        }
     }
+}
 
     public function index()
     {
@@ -29,7 +55,7 @@ class AuctionController extends Controller
     }
 
       private function categoryView(string $category)
-{
+    {
     $this->updateExpiredAuctions();
 
     $products = DB::table('products')
@@ -43,18 +69,30 @@ class AuctionController extends Controller
             ->select('products.*')
             ->get();
 
+            $productIds = $products->pluck('id')->toArray();
+
+            $highestBids = DB::table('bids')
+                ->whereIn('product_id', $productIds)
+                ->select('product_id', DB::raw('MAX(bid_amount) as highest_bid'))
+                ->groupBy('product_id')
+                ->pluck('highest_bid', 'product_id');
+
+            foreach ($products as $product) {
+                $product->current_bid = $highestBids[$product->id] ?? $product->starting_price ?? $product->product_price;
+            }
+
         $activeAuctionDetails = null;
-    $auction = DB::table('auctions')
+        $auction = DB::table('auctions')
         ->where('category', $category)
         ->whereIn('status', ['pending', 'active'])
         ->orderBy('start_time', 'desc')
         ->first();
 
-    return view('auctions.category', [
-        'products' => $products,
-        'category' => $category,
-        'auction'  => $auction,
-    ]);
+        return view('auctions.category', [
+            'products' => $products,
+            'category' => $category,
+            'auction'  => $auction,
+        ]);
 }
 
     public function gadgets()     { return $this->categoryView('Gadgets'); }
@@ -114,5 +152,7 @@ public function startAll(Request $request, $category)
         'message' => 'Auctions started successfully!'
     ]);
 }
+
+
 
 }

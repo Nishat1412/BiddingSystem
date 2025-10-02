@@ -2,8 +2,6 @@ html, body {
     overflow-x: hidden;
     overflow-y: auto;
    font-family: 'Playfair Display', serif;
-  
-   /*background: #eae5d6;*/
 }
 
 .navbar.navbar-expand-lg.navbar-light.bg-light{
@@ -31,15 +29,14 @@ html, body {
     
 }
 
-/* Apply black only to main navbar, not second */
 .main-navbar {
     background: #000 !important;
     color: white;
-    background-color: #000;           /* deep black for top bar */
+    background-color: #000;           
     border-bottom: 1px solid #333;
 }
 .main-navbar .navbar-brand {
-    color: #f5c542 !important;        /* gold brand text */
+    color: #f5c542 !important;        
     font-family: 'Playfair Display', serif;
     font-size: 1.6rem;
 }
@@ -52,9 +49,9 @@ html, body {
     border: none;
 }
 
-/* Second navbar: warm gold background */
+
 .second-navbar {
-    background-color: #cda84b;        /* rich gold */
+    background-color: #cda84b;        
 }
 
 .second-navbar .nav-link {
@@ -65,24 +62,24 @@ html, body {
     transition: color 0.2s;
 }
 
-/* Adjust search input focus */
+
 .main-navbar .form-control:focus {
     box-shadow: 0 0 0 0.2rem rgba(205,168,75,0.25);
 }
 
 
-/* === Icon Colors for Both Navbars === */
+
 .main-navbar i,
 .second-navbar i {
-    color: #f5c542;            /* bright gold */
+    color: #f5c542;            
     transition: color 0.2s ease-in-out;
 }
 
-/* Darker gold on hover */
+
 .main-navbar i:hover,
 .second-navbar i:hover,
 .dropdown-item:hover i {
-    color: #c6931e  !important  ;        /* deeper gold */
+    color: #c6931e  !important  ;        
 }
 
 .dropdown-menu .dropdown-item i {
@@ -132,15 +129,13 @@ html, body {
 .pending-card {
     width: 300px;
     height: 220px;
-    
     border-radius: 20px;
     position: relative;
     margin: 20px 0; 
     margin-left: 100px;
     margin-top: 100px;
-   
-     box-shadow:0 4px 12px rgba(0,0,0,0.1),   /* subtle shadow */
-        0 14px 28px rgba(0,0,0,0.15), /* deeper shadow */
+     box-shadow:0 4px 12px rgba(0,0,0,0.1),   
+        0 14px 28px rgba(0,0,0,0.15), 
         0 10px 10px rgba(0,0,0,0.1);
 
 }
@@ -150,7 +145,7 @@ html, body {
     transition: all 0.3s ease;
 }
 
-/* Top-right icon */
+
 .pending-card .icon-top-right {
     position: absolute;
     top: 15px;
@@ -162,7 +157,7 @@ html, body {
     color: #e0a800; 
 }
 
-/* Card body */
+
 .pending-card .card-body {
     display: flex;
     flex-direction: column;
@@ -178,13 +173,11 @@ html, body {
     padding: 0.75rem 1rem;
 }
 
-/* Card text */
 .pending-card .card-text {
-    color: #6c757d; /* muted text */
+    color: #6c757d; 
     font-size: 0.9rem;
 }
 
-/* Button */
 .pending-card .btn-view {
     width: 100%;
     font-weight: 500;
@@ -197,34 +190,34 @@ html, body {
 }
 
 
-/* Space between navbar, cards, and footer */
+
 .auction-section {
     margin-top: 50px; 
     margin-bottom: 50px; 
 }
 
-/* Card styles */
+
 .auction-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* smooth hover animation */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(6, 207, 107, 0.1); /* subtle shadow */
+    box-shadow: 0 4px 8px rgba(6, 207, 107, 0.1); 
     margin: auto;
 }
 
 .auction-card:hover {
-    transform: scale(1.05); /* zoom effect */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* stronger shadow on hover */
+    transform: scale(1.05); 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-/* Card image */
+
 .auction-card img {
-    width: 100%;       /* fill the card width */
-    height: auto;      /* maintain aspect ratio */
-    object-fit: contain; /* ensure whole image is visible */
-    max-height: 140px; /* optional: restrict height */
+    width: 100%;       
+    height: auto;      
+    object-fit: contain; 
+    max-height: 140px; 
 }
 
-/* Modal customization */
+
 .modal-content {
     max-width: 400px; 
     margin: auto;
@@ -232,13 +225,13 @@ html, body {
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
-/* Modal image */
+
 .modal-img {
     max-height: 200px;
     object-fit: contain;
 }
 
-/* Center all modal content */
+
 .modal-content h4,
 .modal-content p,
 .modal-content h5,
@@ -299,4 +292,13 @@ html, body {
  margin-left: 10px;
  margin-right: 10px;
 border-radius: 15px;
+}
+
+.btn.btn-primary,
+.btn.btn-primary.btn-sm,
+.btn.btn-info,
+.btn.btn-info.btn-sm {
+  background-color: hsl(43, 57%, 55%) !important; 
+  border-color: #cda84b !important;
+  font-family:'Playfair Display', serif !important;
 }

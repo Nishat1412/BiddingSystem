@@ -47,15 +47,17 @@
 
                 <img src="{{ asset('uploads/' . $product->product_image) }}" class="card-img-top" alt="{{ $product->product_name }}">
 
-                <div class="card-body text-center">
-                    <h5 class="card-title">{{ $product->product_name }}</h5>
-                   <p class="card-text">Current bid: ${{ number_format($product->current_bid ?? $product->product_price, 2) }}</p>
+             <div class="card-body text-center">
+            <h5 class="card-title">{{ $product->product_name }}</h5>
+            <p class="card-text"><p class="card-text">Current bid: ${{ number_format($product->current_bid, 2) }}</p>
+                   
                 </div>
             </div>
         </div>
         @endforeach
     </div>
 </div>
+
 
 {{-- Start Auction Modal --}}
 <div class="modal fade" id="startAuctionModal" tabindex="-1" role="dialog">
@@ -100,5 +102,6 @@
 @section('scripts')
 
 <script src="{{ asset('js/auction.js') }}"></script>
+
 
 @endsection

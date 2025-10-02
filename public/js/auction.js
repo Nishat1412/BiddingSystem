@@ -17,7 +17,7 @@ $(document).ready(function(){
         modal.find('.modal-img').attr('src', button.data('image'));
     });
     
-    // Start auction form submission
+
     $('#startAuctionForm').on('submit', function(e){
         e.preventDefault();
 
@@ -25,7 +25,6 @@ $(document).ready(function(){
         const start = new Date(form.find('[name="start_time"]').val());
         const end   = new Date(form.find('[name="end_time"]').val());
 
-        // Update DOM immediately so user sees the times
         $('#auction-start').text(start.toISOString());
         $('#auction-end').text(end.toISOString());
         $('#auction-info').show();
@@ -38,7 +37,7 @@ $(document).ready(function(){
                 if(res.success){
                     alert('Auction started for all products!');
                     $('#startAuctionModal').modal('hide');
-                    location.reload(); // reload so countdown uses DB values
+                    location.reload();
                 } else {
                     alert(res.message || 'Failed to start auction.');
                 }
@@ -50,7 +49,7 @@ $(document).ready(function(){
         });
     });
 
-    // ✅ Countdown logic (runs on every page load)
+
     function startCountdown(){
         let startElem = document.getElementById("auction-start");
         let endElem   = document.getElementById("auction-end");
@@ -85,7 +84,6 @@ $(document).ready(function(){
         return `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
 
-    // Run countdown when page loads
     startCountdown();
 
 });

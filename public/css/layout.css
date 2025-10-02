@@ -19,30 +19,33 @@ html, body {
         transition: color 0.2s;
     }
 
-/* === NEW COLOR THEME to match the reference image === */
+
 .main-navbar {
-    background-color: #000;           /* deep black for top bar */
+    background-color: #000;           
     border-bottom: 1px solid #333;
         background: #000 !important;
     color: white;
 }
+
 .main-navbar .navbar-brand {
-    color: #f5c542 !important;        /* gold brand text */
+    color: #f5c542 !important;        
     font-family: 'Playfair Display', serif;
     font-size: 1.6rem;
 }
+
 .main-navbar .navbar-brand:hover {
     color: #ffd966 !important;
 }
+
 .main-navbar .form-control {
     background: #fff;
     border-radius: 30px;
     border: none;
 }
 
-/* Second navbar: warm gold background */
+
 .second-navbar {
-    background-color: #cda84b;        /* rich gold */
+    background-color: #cda84b;        
 }
 
 .second-navbar .nav-link {
@@ -53,24 +56,21 @@ html, body {
     transition: color 0.2s;
 }
 
-/* Adjust search input focus */
 .main-navbar .form-control:focus {
     box-shadow: 0 0 0 0.2rem rgba(205,168,75,0.25);
 }
 
-
-/* === Icon Colors for Both Navbars === */
 .main-navbar i,
 .second-navbar i {
-    color: #f5c542;            /* bright gold */
+    color: #f5c542;          
     transition: color 0.2s ease-in-out;
 }
 
-/* Darker gold on hover */
+
 .main-navbar i:hover,
 .second-navbar i:hover,
 .dropdown-item:hover i {
-    color: #c6931e  !important  ;        /* deeper gold */
+    color: #c6931e  !important  ;        
 }
 
 .dropdown-menu .dropdown-item i {
@@ -240,19 +240,19 @@ form button {
 
 .social-container {
     display: flex;
-    justify-content: center; /* centers the icons */
-    gap: 20px;                /* spacing between icons */
+    justify-content: center; 
+    gap: 20px;                
 }
 
 .social-icon {
-    font-size: 15px;          /* size of icons */
-    color: black;             /* icon color */
-    text-decoration: none;    /* remove underline */
+    font-size: 15px;         
+    color: black;             
+    text-decoration: none;    
     transition: color 0.3s ease; 
 }
 
 .social-icon:hover {
-    color: #555;              /* optional hover effect */
+    color: #555;              
 }
 
 .credentials input {
@@ -268,12 +268,12 @@ form button {
 }
 
 .credentials {
-    padding: 0 40px;  /* 40px space on left and right */
+    padding: 0 40px;  
 }
 
 .para_icon {
     font-size: 0.95rem;
-    color: #0f0202; /* softer text color */
-    text-align: center; /* center the text */
-    margin-top: 5px; /* space above the paragraph */
+    color: #0f0202; 
+    text-align: center; 
+    margin-top: 5px;
 }

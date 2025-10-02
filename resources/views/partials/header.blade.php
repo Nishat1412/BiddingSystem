@@ -1,26 +1,23 @@
- <!-- MAIN NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark main-navbar py-2">
     <div class="container-fluid" style="max-width: 1100px; max-height: 40px;">
-        <!-- Brand -->
+     
         <a class="navbar-brand font-weight-bold" href="{{ url('/home') }}">BidMaster</a>
 
-        <!-- Toggler -->
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#mainNavbar" aria-controls="mainNavbar"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Collapsible Content -->
         <div class="collapse navbar-collapse" id="mainNavbar">
 
-            <!-- Search bar -->
+
             <form class="form-inline mx-auto w-50">
                 <input class="form-control w-100 rounded-pill px-3" type="search"
                        placeholder="Search Items" aria-label="Search">
             </form>
 
-            <!-- Right Icons -->
+
             <div class="form-inline my-2 my-lg-0">
                 <a href="#" class="text-white mx-3" title="Notifications">
                     <i class="fas fa-bell" style="font-size:1.3rem;"></i>
@@ -33,7 +30,7 @@
     </div>
 </nav>
 
-            <!-- SECOND NAVBAR -->
+
             <nav class="navbar navbar-expand second-navbar py-1">
                 <div class="container-fluid" style="max-width: 1100px; max-height: 30px;">
                     <ul class="navbar-nav mx-auto">
@@ -64,32 +61,31 @@
                 </div>
             </li>
 
-            <!-- Categories with dropdown -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Categories
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-    <a class="dropdown-item" href="{{ url('/products') }}">
-        <i class="fas fa-gem mr-2" ></i> All Products
-    </a>
-    <a class="dropdown-item" href="{{ url('/products/gadgets') }}">
-        <i class="fas fa-microchip mr-2"></i> Gadgets
-    </a>
-    <a class="dropdown-item" href="{{ url('/products/artwork') }}">
-        <i class="fas fa-palette mr-2"></i> Artwork
-    </a>
-    <a class="dropdown-item" href="{{ url('/products/memorabilia') }}">
-        <i class="fas fa-award mr-2"></i> Memorabilia
-    </a>
-    <a class="dropdown-item" href="{{ url('/products/antiques') }}">
-        <i class="fas fa-hourglass mr-2"></i> Antiques & Collectibles
-    </a>
-    <a class="dropdown-item" href="{{ url('/products/automobiles') }}">
-        <i class="fas fa-car mr-2"></i> Automobiles
-    </a>
-</div>
+                <a class="dropdown-item" href="{{ url('/products') }}">
+                    <i class="fas fa-gem mr-2" ></i> All Products
+                </a>
+                <a class="dropdown-item" href="{{ url('/products/gadgets') }}">
+                    <i class="fas fa-microchip mr-2"></i> Gadgets
+                </a>
+                <a class="dropdown-item" href="{{ url('/products/artwork') }}">
+                    <i class="fas fa-palette mr-2"></i> Artwork
+                </a>
+                <a class="dropdown-item" href="{{ url('/products/memorabilia') }}">
+                    <i class="fas fa-award mr-2"></i> Memorabilia
+                </a>
+                <a class="dropdown-item" href="{{ url('/products/antiques') }}">
+                    <i class="fas fa-hourglass mr-2"></i> Antiques & Collectibles
+                </a>
+                <a class="dropdown-item" href="{{ url('/products/automobiles') }}">
+                    <i class="fas fa-car mr-2"></i> Automobiles
+                </a>
+            </div>
 
             </li>
 

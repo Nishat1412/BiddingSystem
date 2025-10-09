@@ -31,19 +31,6 @@ class AuthController extends Controller
     return view('user.dashboard');
 }
 
-    public function store(AuthRequest $request)
-    {
-        session([
-        'pending_user' => $request->only([
-            'name','username','email','phone','password'
-        ])
-    ]);
-
-    
-    return redirect()->route('upload.form')
-                     ->with('success', 'Please upload your documents to complete registration.');
-    }
-
     public function login(Request $request)
 {
     $credentials = $request->validate([
@@ -67,6 +54,19 @@ class AuthController extends Controller
         return redirect()->route('login')->with('success', 'Logged out successfully.');
     }
 
+        public function store(AuthRequest $request)
+    {
+        session([
+        'pending_user' => $request->only([
+            'name','username','email','phone','password'
+        ])
+    ]);
+
+    
+    return redirect()->route('upload.form')
+                     ->with('success', 'Please upload your documents to complete registration.');
+    }
+
     public function showUploadForm()
 {
     if (!session()->has('pending_user')) {
@@ -85,7 +85,7 @@ public function handleUpload(Request $request)
 
     $request->validate([
         'identity_card' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
-        'cash_memo'     => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
+        'birth_certificate_or_passport' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
     ]);
 
     $pending = session('pending_user');
@@ -101,24 +101,23 @@ public function handleUpload(Request $request)
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-       
-        $nidFile = $request->file('identity_card');
-        $nidFilename = time() . '_' . $nidFile->getClientOriginalName();
-        $nidFile->storeAs('', $nidFilename, 'identity'); 
-        $nidPath = $nidFilename; 
 
-      
-        $invoiceFile = $request->file('cash_memo');
-        $invoiceFilename = time() . '_' . $invoiceFile->getClientOriginalName();
-        $invoiceFile->storeAs('', $invoiceFilename, 'invoice'); 
-        $invoicePath = $invoiceFilename; 
+        $nidFile = $request->file('identity_card');
+        $nidFilename = time() . '_nid_' . $nidFile->getClientOriginalName();
+        $nidFile->storeAs('', $nidFilename, 'identity');
+        $nidPath = $nidFilename;
+
+        $docFile = $request->file('birth_certificate_or_passport');
+        $docFilename = time() . '_doc_' . $docFile->getClientOriginalName();
+        $docFile->storeAs('', $docFilename, 'documents');
+        $docPath = $docFilename;
 
         DB::table('document_submissions')->insert([
-            'user_id'       => $userId,
+            'user_id' => $userId,
             'identity_card' => $nidPath,
-            'cash_memo'     => $invoicePath,
-            'created_at'    => now(),
-            'updated_at'    => now(),
+            'birth_certificate_or_passport' => $docPath,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
     });
 
@@ -126,4 +125,5 @@ public function handleUpload(Request $request)
 
     return redirect()->route('login')->with('success', 'Registration complete. You may now log in.');
 }
+
 }

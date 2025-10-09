@@ -1,6 +1,7 @@
 html, body {
     overflow-x: hidden;
     overflow-y: auto;
+  min-height: 100vh;
    font-family: 'Playfair Display', serif;
 }
 
@@ -82,7 +83,7 @@ footer {
 .main-navbar i:hover,
 .second-navbar i:hover,
 .dropdown-item:hover i {
-    color: #c6931e  !important  ;        
+    color: #c6931e  !important  ;       
 }
 
 .dropdown-menu .dropdown-item i {
@@ -90,6 +91,25 @@ footer {
 }
 .dropdown-menu .dropdown-item:hover i {
     color: #c6931e;
+}
+
+.dropdown-item {
+    color: #000 !important;       
+    background-color: #fff !important; 
+}
+
+
+.dropdown-item:hover {
+    color: #fff !important;
+    background-color: #c8c7c4ef !important; 
+}
+
+.dropdown-item:focus,
+.dropdown-item:active {
+    color: #fff !important;
+    background-color: #c8c7c4ef !important;
+    outline: none !important; 
+    box-shadow: none !important; 
 }
 
 .container.mt-5 {
@@ -130,8 +150,6 @@ footer {
     color: #fff !important;               
 }
 
-
-
 .custom-shadow {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
@@ -165,8 +183,8 @@ body.modal-open {
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-
 .auction-card img {
+    margin-top: 8px;
     width: 100%;       
     height: auto;      
     object-fit: contain; 
@@ -225,12 +243,12 @@ body.modal-open {
     border-color: #cda84b !important;
 }
 
-/*.user_navbar {
+.user_navbar {
     width: 100%;
 }
 
 .user_navbar .navbar {
-    background-color: rgb(202, 201, 201) !important; 
+    background-color: rgb(167, 166, 166) !important; 
     border-radius: 0;                  
     padding-left: 20px;
     padding-right: 20px;
@@ -249,7 +267,32 @@ body.modal-open {
 .user_navbar .btn-danger {
     font-size: 0.9rem;
     padding: 5px 12px;
-}*/
+}
+.admin_navbar {
+    width: 100%;
+}
+
+.admin_navbar .navbar {
+    background-color: rgb(167, 166, 166) !important; 
+    border-radius: 0;                  
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.admin_navbar .navbar-brand {
+    color: white !important;          
+    font-weight: bold;
+}
+
+.admin_navbar .navbar span {
+    color: white;                      
+    font-weight: 500;
+}
+
+.admin_navbar .btn-danger {
+    font-size: 0.9rem;
+    padding: 5px 12px;
+}
 
   .custom-btn {
    background-color: #000; 
@@ -345,4 +388,51 @@ margin-top: 20px;
     margin-right: 120px;
     padding: 70px 70px;
 }
+
+.table-heading{
+    background: rgb(168, 166, 166);
+    color: #fcfbfb;
+    font-size: 19px;
+}
+
+.live-auctions{
+    margin-top: -35px;
+}
+
+.auction-card-home img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.live-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 20px;
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.auction-card-home {
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.auction-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.mb-4.text-center.text-capitalize{
+ margin-top: -70px;
+ background: #000;
+ color: whitesmoke;
+ padding: 5px 5px;
+ margin-left: 10px;
+ margin-right: 10px;
+border-radius: 15px;
+}
+
 

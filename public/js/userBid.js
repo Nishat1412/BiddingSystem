@@ -1,15 +1,3 @@
-$('#bidNowModal').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget);
-    var productId = button.data('product-id');
-    var productName = button.data('product-name');
-    var currentBid = button.data('current-bid');
-
-    var modal = $(this);
-    modal.find('#bidProductId').val(productId);
-    modal.find('#bidProductName').text('Place Your Bid for ' + productName);
-    modal.find('#bidAmount').attr('min', parseFloat(currentBid) + 0.01); // min bid must be higher than current
-});
-
 $('#bidHistoryModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget);
     var productId = button.data('product-id');
@@ -36,4 +24,16 @@ $('#bidHistoryModal').on('show.bs.modal', function (event) {
             tbody.html('<tr><td colspan="3" class="text-center text-danger">Failed to load bid history</td></tr>');
         }
     });
+});
+
+$('#bidNowModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget);
+    var productId = button.data('product-id');
+    var productName = button.data('product-name');
+    var currentBid = button.data('current-bid');
+
+    var modal = $(this);
+    modal.find('#bidProductId').val(productId);
+    modal.find('#bidProductName').text('Place Your Bid for ' + productName);
+    modal.find('#bidAmount').attr('min', parseFloat(currentBid) + 0.01); 
 });

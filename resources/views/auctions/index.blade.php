@@ -1,12 +1,7 @@
 @extends('admin.adminlayout')
+@section('title') All Auctions @endsection
 @section('content')
-
-<div class="container">
-    <button class="btn btn-success mb-3" data-toggle="modal" data-target="#startAuctionModal">
-        Start Auction
-    </button>
-
-<!-- Start Auction Modal -->
+  <h3 class="mb-4 text-center text-capitalize"> All Auction Products</h3>
 <div class="modal fade" id="startAuctionModal" tabindex="-1" role="dialog">
   <div class="modal-dialog">
     <form method="POST" id="startAuctionForm">
@@ -55,7 +50,7 @@
                 <div class="card-body text-center">
                     <h5 class="card-title">{{ $product->product_name }}</h5>
                     <p class="card-text">
-                        Current bid: ${{ number_format($product->product_price, 2) }}
+                        Starting bid: ${{ number_format($product->product_price, 2) }}
                     </p>
                 </div>
             </div>
@@ -84,7 +79,6 @@
         const button = $(event.relatedTarget);
         const modal  = $(this);
 
-        // Lock page scroll
         const scrollY = window.scrollY;
         document.body.style.position = 'fixed';
         document.body.style.top = `-${scrollY}px`;
@@ -92,7 +86,6 @@
         document.body.style.right = '0';
         document.body.style.width = '100%';
 
-        // Populate modal fields
         modal.find('.modal-title').text(button.data('name'));
         modal.find('.modal-price').text(button.data('price'));
         modal.find('.modal-description').text(button.data('description'));

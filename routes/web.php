@@ -16,6 +16,22 @@ Route::get('/home', function () {
     return view('user.home'); 
 });
 
+Route::get('/howitworks', function () {
+    return view('user.howitworks'); 
+});
+
+Route::get('/legal', function () {
+    return view('user.legal'); 
+});
+
+Route::get('/help', function () {
+    return view('user.help'); 
+});
+
+Route::get('/about', function () {
+    return view('user.about'); 
+});
+
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
@@ -27,7 +43,6 @@ Route::get('/upload-documents', [AuthController::class, 'showUploadForm'])->name
 Route::post('/upload-documents', [AuthController::class, 'handleUpload'])->name('upload.submit');
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-
 
 Route::get('/admin/login', [AdminAuthController::class, 'showLogin'])->name('admin.login');
 Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
@@ -45,21 +60,17 @@ Route::middleware(['auth:admin'])->group(function(){
 
     Route::get('/admin/document-pdf/{type}/{user_id}', [AdminAuthController::class, 'generateDocumentPdf'])->name('admin.generateDocumentPdf') ;
     
-
-
     Route::post('/admin/approve-product/{id}', [AuctionController::class, 'approveProduct'])->name('approve.product');
 
-    Route::get('/auctions', [AuctionController::class, 'index'])->name('auctions.index');
+    //Route::post('/auctions/start-all/{category}', [AuctionController::class, 'startAll'])->name('auctions.startAll');
+    Route::post('/auctions/start/{productId}', [AuctionController::class, 'startSingle'])->name('auctions.startSingle');
 
-    Route::post('/auctions/start-all/{category}', [AuctionController::class, 'startAll'])->name('auctions.startAll');
-
-
-
+    Route::get('/bids', [AuctionController::class, 'allBids'])->name('bids.index');
 
 });
 
 
-
+Route::get('/auctions', [AuctionController::class, 'index'])->name('auctions.index');
 Route::get('/auctions/gadgets',        [AuctionController::class,'gadgets'])->name('auctions.gadgets');
 Route::get('/auctions/artwork',        [AuctionController::class,'artwork'])->name('auctions.artwork');
 Route::get('/auctions/antiques',       [AuctionController::class,'antiques'])->name('auctions.antiques');
@@ -90,6 +101,9 @@ Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('pr
 
 Route::post('/products/{id}/request-auction', [ProductController::class,'requestAuction'])->name('products.requestAuction');
 
+Route::post('/auctions/place-bid', [AuctionController::class, 'placeBid'])->name('auctions.placeBid');
+
+Route::get('/auctions/{productId}/history', [AuctionController::class, 'bidHistory'])->name('auctions.bidHistory');
 
 
 });

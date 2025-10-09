@@ -1,6 +1,6 @@
 <div class="admin_navbar">
       @auth('admin')
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
      <a class="navbar-brand" href="{{ route('admin.dashboard') }}">
              Dashboard
         </a>

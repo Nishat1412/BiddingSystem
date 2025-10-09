@@ -3,7 +3,7 @@
 @section('content1')
 
 <div class="container mt-5">
-<h3>Pending Auction Requests</h3>
+<h3 class="heading mb-4"> Pending Auction Requests </h3>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -38,23 +38,24 @@
 
                     @if(in_array(strtolower($nidExt), ['jpg','jpeg','png']))
                         <a href="{{ route('admin.generateDocumentPdf', ['type'=>'nid','user_id'=>$prod->user_id]) }}" 
-                        target="_blank" class="btn btn-primary btn-sm">NID (PDF)</a>
+                        target="_blank" class="btn btn-primary btn-sm">NID</a>
                     @else
                         <a href="{{ asset('identity/'.$prod->identity_card) }}" target="_blank" class="btn btn-primary btn-sm">NID</a>
                     @endif
                 @endif
 
-                {{-- Invoice / Cash Memo --}}
-                @if($prod->cash_memo)
-                    @php $invoiceExt = pathinfo($prod->cash_memo, PATHINFO_EXTENSION); @endphp
+                   {{-- Birth Certificate / Passport --}}
+                    @if($prod->birth_certificate_or_passport)
+                        @php $docExt = pathinfo($prod->birth_certificate_or_passport, PATHINFO_EXTENSION); @endphp
 
-                    @if(in_array(strtolower($invoiceExt), ['jpg','jpeg','png']))
-                        <a href="{{ route('admin.generateDocumentPdf', ['type'=>'invoice','user_id'=>$prod->user_id]) }}" 
-                        target="_blank" class="btn btn-secondary btn-sm">Invoice (PDF)</a>
-                    @else
-                        <a href="{{ asset('invoice/'.$prod->cash_memo) }}" target="_blank" class="btn btn-secondary btn-sm">Invoice</a>
+                        @if(in_array(strtolower($docExt), ['jpg','jpeg','png']))
+                            <a href="{{ route('admin.generateDocumentPdf', ['type'=>'birth', 'user_id'=>$prod->user_id]) }}" 
+                               target="_blank" class="btn btn-secondary btn-sm">Birth Cert / Passport </a>
+                        @else
+                            <a href="{{ asset('documents/'.$prod->birth_certificate_or_passport) }}" 
+                               target="_blank" class="btn btn-secondary btn-sm">Birth Cert / Passport</a>
+                        @endif
                     @endif
-                @endif
 
                 {{-- Fallback --}}
                 @unless($prod->identity_card || $prod->cash_memo)
@@ -67,12 +68,12 @@
                 <form action="{{ route('admin.auctionAction', $prod->id) }}" method="POST" class="d-inline">
                     @csrf
                     <input type="hidden" name="action" value="approved">
-                    <button class="btn btn-success btn-sm">Approve</button>
+                    <button class="btn btn-success btn-sm approve">Approve</button>
                 </form>
                 <form action="{{ route('admin.auctionAction', $prod->id) }}" method="POST" class="d-inline">
                     @csrf
                     <input type="hidden" name="action" value="rejected">
-                    <button class="btn btn-danger btn-sm">Reject</button>
+                    <button class="btn btn-danger btn-sm reject">Reject</button>
                 </form>
             </td>
         </tr>

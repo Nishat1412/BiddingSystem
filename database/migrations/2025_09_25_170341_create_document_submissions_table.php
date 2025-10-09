@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('identity_card');
-            $table->string('cash_memo');
+            $table->string('birth_certificate_or_passport');
             $table->timestamps();
 
     $table->foreign('user_id')->references('id')->on('user_records')->onDelete('cascade');

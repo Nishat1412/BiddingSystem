@@ -19,8 +19,8 @@
                 <p class="hero-desc">
                   High-performance laptops with cutting-edge technology. Perfect for work, gaming, and creative tasks.
                 </p>
-                 <a href="#" class="btn custom-btn me-2">See Details</a>
-                <a href="#" class="btn custom-btn">Bid Now</a>
+                 <a href="{{ url('/products/gadgets') }}" class="btn custom-btn me-2">See Details</a>
+                <a href="{{ url('/auctions/gadgets') }}" class="btn custom-btn">Bid Now</a>
               </div>
             </div>
           </div>
@@ -40,8 +40,8 @@
                 <p class="hero-desc">
                   Sakhyamuni Buddha composition sculpture. Crafted of ceramic, with a matte glaze and crackle finish. Depicts two gripping fists, pulling at a face.
                 </p>
-                 <a href="#" class="btn custom-btn me-2">See Details</a>
-                <a href="#" class="btn custom-btn">Bid Now</a>
+                 <a href="{{ url('/products/antiques') }}" class="btn custom-btn me-2">See Details</a>
+                <a href="{{ url('/auctions/antiques') }}" class="btn custom-btn">Bid Now</a>
               </div>
             </div>
           </div>
@@ -60,8 +60,8 @@
                 <p class="hero-desc">
                   Original artwork from renowned artists. Perfect for collectors and interior decoration.
                 </p>
-                 <a href="#" class="btn custom-btn me-2">See Details</a>
-                 <a href="#" class="btn custom-btn">Bid Now</a>
+                   <a href="{{ url('/products/artwork') }}" class="btn custom-btn me-2">See Details</a>
+                <a href="{{ url('/auctions/artwork') }}" class="btn custom-btn">Bid Now</a>
               </div>
             </div>
           </div>
@@ -80,8 +80,8 @@
                 <p class="hero-desc">
                   Collectible memorabilia from history and pop culture, perfect for enthusiasts.
                 </p>
-                 <a href="#" class="btn custom-btn me-2">See Details</a>
-                <a href="#" class="btn custom-btn">Bid Now</a>
+                  <a href="{{ url('/products/memorabilia') }}" class="btn custom-btn me-2">See Details</a>
+                <a href="{{ url('/auctions/memorabilia') }}" class="btn custom-btn">Bid Now</a>
               </div>
             </div>
           </div>
@@ -91,7 +91,7 @@
         <div class="carousel-item">
           <div class="row">
             <div class="col-md-6 d-flex justify-content-center align-items-center">
-              <img src="{{ asset('image/automobile.jpg') }}" class="img-fluid" style="max-height:300px;" alt="Automobiles">
+              <img src="{{ asset('image/automobilecarousal.webp') }}" class="img-fluid" style="max-height:300px;" alt="Automobiles">
             </div>
             <div class="col-md-6 d-flex align-items-center">
               <div>
@@ -100,8 +100,8 @@
                 <p class="hero-desc">
                   From vintage classics to modern marvels, explore our exclusive automobile collection.
                 </p>
-                 <a href="#" class="btn custom-btn me-2">See Details</a>
-                <a href="#" class="btn custom-btn">Bid Now</a>
+                   <a href="{{ url('/products/automobiles') }}" class="btn custom-btn me-2">See Details</a>
+                <a href="{{ url('/auctions/automobiles') }}" class="btn custom-btn">Bid Now</a>
               </div>
             </div>
           </div>
@@ -146,7 +146,7 @@
                 <div class="card-body text-center">
                   <h6 class="font-weight-bold mb-1">Gadgets</h6>
                   <p class="text-muted small">2150 Items</p>
-                  <a href="#" class="btn btn-outline-warning btn-sm">Explore</a>
+                  <a href="{{ url('/products/gadgets') }}" class="btn btn-outline-warning btn-sm">Explore</a>
                 </div>
               </div>
             </div>
@@ -163,7 +163,7 @@
                 <div class="card-body text-center">
                   <h6 class="font-weight-bold mb-1">Artwork</h6>
                   <p class="text-muted small">1870 Items</p>
-                  <a href="#" class="btn btn-outline-warning btn-sm">Explore</a>
+                  <a href="{{ url('/products/artwork') }}" class="btn btn-outline-warning btn-sm">Explore</a>
                 </div>
               </div>
             </div>
@@ -180,7 +180,7 @@
                 <div class="card-body text-center">
                   <h6 class="font-weight-bold mb-1">Antiques & Collectibles</h6>
                   <p class="text-muted small">3245 Items</p>
-                  <a href="#" class="btn btn-outline-warning btn-sm">Explore</a>
+                  <a href="{{ url('/products/antiques') }}" class="btn btn-outline-warning btn-sm">Explore</a>
                 </div>
               </div>
             </div>
@@ -203,7 +203,7 @@
                 <div class="card-body text-center">
                   <h6 class="font-weight-bold mb-1">Antiques & Collectibles</h6>
                   <p class="text-muted small">3245 Items</p>
-                  <a href="#" class="btn btn-outline-warning btn-sm">Explore</a>
+                  <a href="{{ url('/products/antiques') }}" class="btn btn-outline-warning btn-sm">Explore</a>
                 </div>
               </div>
             </div>
@@ -220,7 +220,7 @@
                 <div class="card-body text-center">
                   <h6 class="font-weight-bold mb-1">Automobile</h6>
                   <p class="text-muted small">980 Items</p>
-                  <a href="#" class="btn btn-outline-warning btn-sm">Explore</a>
+                  <a href="{{ url('/products/automobiles') }}" class="btn btn-outline-warning btn-sm">Explore</a>
                 </div>
               </div>
             </div>
@@ -237,7 +237,7 @@
                 <div class="card-body text-center">
                   <h6 class="font-weight-bold mb-1">Memorabilia</h6>
                   <p class="text-muted small">1240 Items</p>
-                  <a href="#" class="btn btn-outline-warning btn-sm">Explore</a>
+                  <a href="{{ url('/products/automobiles') }}" class="btn btn-outline-warning btn-sm">Explore</a>
                 </div>
               </div>
             </div>
@@ -259,9 +259,110 @@
     </div>
   </div>
 </section>
-
 </div>
- <br>
+
+<section class="live-auctions py-5">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h5 class="text-uppercase text-warning mb-0">Live Auctions</h5>
+      <div>
+        <a class="btn btn-outline-dark btn-sm mr-2" href="#auctionCarousel" role="button" data-slide="prev">
+          <i class="fas fa-chevron-left"></i>
+        </a>
+        <a class="btn btn-outline-dark btn-sm" href="#auctionCarousel" role="button" data-slide="next">
+          <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <div id="auctionCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+      <div class="carousel-inner">
+
+        <div class="carousel-item active">
+          <div class="row justify-content-center">
+            <div class="col-md-3 col-sm-6 mb-4">
+              <div class="auction-card-home card border-0 shadow-sm">
+                <div class="position-relative">
+                  <span class="badge badge-danger live-badge">LIVE</span>
+                  <img src="{{ asset('image/gadgets.jpg') }}" class="card-img-top" alt="Gadgets">
+                </div>
+                <div class="card-body text-center">
+                  <h6 class="font-weight-bold mb-1">Gadgets</h6>
+                  <p class="text-muted small mb-2">$2500</p>
+                  <a href="{{ url('/auctions/gadgets') }}" class="btn btn-dark btn-sm">Bid Now</a>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-md-3 col-sm-6 mb-4">
+              <div class="auction-card-home card border-0 shadow-sm">
+                <div class="position-relative">
+                  <span class="badge badge-danger live-badge">LIVE</span>
+                  <img src="{{ asset('image/artwork3.jpg') }}" class="card-img-top" alt="Art">
+                </div>
+                <div class="card-body text-center">
+                  <h6 class="font-weight-bold mb-1">Art Piece</h6>
+                  <p class="text-muted small mb-2">$1800</p>
+                  <a href="{{ url('/auctions/artwork') }}" class="btn btn-dark btn-sm">Bid Now</a>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-md-3 col-sm-6 mb-4">
+              <div class="auction-card-home card border-0 shadow-sm">
+                <div class="position-relative">
+                  <span class="badge badge-danger live-badge">LIVE</span>
+                  <img src="{{ asset('image/antique1.jpg') }}" class="card-img-top" alt="Antiques">
+                </div>
+                <div class="card-body text-center">
+                  <h6 class="font-weight-bold mb-1">Antiques</h6>
+                  <p class="text-muted small mb-2">$1350</p>
+                  <a href="{{ url('/auctions/antiques') }}" class="btn btn-dark btn-sm">Bid Now</a>
+                </div>
+              </div>
+            </div>
+
+   
+            <div class="col-md-3 col-sm-6 mb-4">
+              <div class="auction-card-home card border-0 shadow-sm">
+                <div class="position-relative">
+                  <span class="badge badge-danger live-badge">LIVE</span>
+                  <img src="{{ asset('image/memorabilia2.jpg') }}" class="card-img-top" alt="Memorabilia">
+                </div>
+                <div class="card-body text-center">
+                  <h6 class="font-weight-bold mb-1">Memorabilia</h6>
+                  <p class="text-muted small mb-2">$1190</p>
+                  <a href="{{ url('/auctions/memorabilia') }}" class="btn btn-dark btn-sm">Bid Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="carousel-item">
+            <div class="col-md-3 col-sm-6 mb-4">
+              <div class="auction-card-home card border-0 shadow-sm">
+                <div class="position-relative">
+                  <span class="badge badge-danger live-badge">LIVE</span>
+                  <img src="{{ asset('image/automobilelive.jpeg') }}" class="card-img-top" alt="Automobile">
+                </div>
+                <div class="card-body text-center">
+                  <h6 class="font-weight-bold mb-1">Automobile</h6>
+                  <p class="text-muted small mb-2">$1490</p>
+                  <a href="{{ url('/auctions/automobiles') }}" class="btn btn-dark btn-sm">Bid Now</a>
+                </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <div class="container">
 <h5 class="text-uppercase text-warning justify-content left">How It Works</h5>
@@ -301,7 +402,7 @@
 
     <div class="col-md-4 position-relative">
       <div class="mb-3 position-relative" style="z-index:2;">
-        <a href="" class="d-inline-flex justify-content-center align-items-center bg-dark text-warning rounded p-3 text-decoration-none" style="width:70px; height:70px;">
+        <a href="{{url('/auctions')}}" class="d-inline-flex justify-content-center align-items-center bg-dark text-warning rounded p-3 text-decoration-none" style="width:70px; height:70px;">
           <i class="fas fa-gavel fa-2x"></i>
         </a>
       </div>
@@ -313,6 +414,7 @@
 
   </div>
 </div>
+<br>
 <br>
 
 <div class="container my-5">
@@ -340,7 +442,5 @@
 
   </div>
 </div>
-
-
 
 @endsection

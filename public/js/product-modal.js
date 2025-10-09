@@ -1,16 +1,9 @@
-
-    document.addEventListener("DOMContentLoaded", function () {
-        const deleteForms = document.querySelectorAll(".delete-form");
-
-        deleteForms.forEach(function (form) {
-            form.addEventListener("submit", function (e) {
-                e.preventDefault(); // Stop form submission
-                if (confirm("Are you sure you want to delete this product?")) {
-                    form.submit(); // Submit form if user confirms
-                }
-            });
-        });
-    });
+$(document).on('submit', '.delete-form', function(e){
+    e.preventDefault();
+    if(confirm('Are you sure you want to delete this product?')){
+        this.submit();
+    }
+});
 
 $('#productModal').on('show.bs.modal', function (e) {
    var button = $(e.relatedTarget);

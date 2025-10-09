@@ -48,8 +48,9 @@
         </div>
 
         <div class="form-group mb-3">
-            <label>Description</label>
-            <textarea name="product_description" class="form-control">{{ old('product_description', $product->product_description) }}</textarea>
+            <label>Description</label> <label style="color : #ef1d1dff; font-size: 14px;">(Please include the duration you want the auction to run)*</label>
+            <p style=" font-size: 14px; margin-left: 90px"> (Eg: Auction Duration: Start Date: MM/DD/YYYY to End Date: MM/DD/YYYY)</p>
+            <textarea name="product_description" class="form-control">{{ old('product_description') }}</textarea>
         </div>
 
         <div class="form-group mb-3">
@@ -60,7 +61,18 @@
             @endif
         </div>
 
-        <button type="submit" class="btn btn-success">Update Product</button>
+        <div class="form-group mb-3">
+        <label>Cash Memo</label>
+        <input type="file" name="cash_memo" class="form-control mb-2">
+          @if($product->cash_memo)
+        <p>Existing Cash Memo:</p>
+        <a href="{{ asset('invoice/'.$product->cash_memo) }}" target="_blank">
+            <img src="{{ asset('invoice/'.$product->cash_memo) }}" alt="Cash Memo" width="150">
+        </a>
+        @endif
+    </div>
+
+        <button type="submit" class="btn btn-bid">Update Product</button>
         @php
             $category = old('category', '');
             $categoryRoute = match(strtolower($category)) {

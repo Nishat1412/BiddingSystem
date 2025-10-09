@@ -90,7 +90,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('/how-it-works') }}">How it Works</a>
+                <a class="nav-link" href="{{ url('/howitworks') }}">How it Works</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('/help') }}">Help</a>

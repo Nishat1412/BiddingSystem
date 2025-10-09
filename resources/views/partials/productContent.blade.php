@@ -18,13 +18,10 @@
                          
                 </button>
 
-
                 <img src="{{ asset('uploads/' . $product->product_image) }}" alt="{{ $product->product_name }}">
-
-
                 <div class="card-body text-center">
                     <h5 class="card-title">{{ $product->product_name }}</h5>
-                    <p class="card-text">Current bid: ${{ $product->product_price }}</p>
+                    <p class="card-text">Starting bid: ${{ $product->product_price }}</p>
 
 
                      @if (Auth()->guard('user_record')->id() == $product->user_id)
@@ -32,7 +29,7 @@
                         <i class="fas fa-edit"></i>
                     </a>
 
-                    <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="d-inline">
+                    <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="delete-form d-inline">
                         @csrf @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm">
                             <i class="fas fa-trash-alt"></i> 
@@ -47,7 +44,7 @@
     </div>
 
     @auth('user_record')
-    <a href="{{ route('products.create') }}" class="btn btn-success  add-product-btn">+ Add New Product</a>
+    <a href="{{ route('products.create') }}" class="btn btn-bid add-product-btn">+ Add New Product</a>
     @endauth
 </div>
 

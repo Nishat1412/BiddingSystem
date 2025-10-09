@@ -11,6 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('auction_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_record_id')->constrained('user_records')->onDelete('cascade');
+            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
             $table->decimal('bid_amount', 10, 2);
             $table->timestamp('created_at')->useCurrent();
         });
@@ -19,3 +20,4 @@ return new class extends Migration {
         Schema::dropIfExists('bids');
     }
 };
+

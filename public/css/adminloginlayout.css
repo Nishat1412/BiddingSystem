@@ -32,7 +32,6 @@ html, body {
     
 }
 
-
 .main-navbar {
     background-color: #000;           
     border-bottom: 1px solid #333;
@@ -87,6 +86,25 @@ html, body {
 }
 .dropdown-menu .dropdown-item:hover i {
     color: #c6931e;
+}
+
+.dropdown-item {
+    color: #000 !important;       
+    background-color: #fff !important; 
+}
+
+
+.dropdown-item:hover {
+    color: #fff !important;
+    background-color: #c8c7c4ef !important; 
+}
+
+.dropdown-item:focus,
+.dropdown-item:active {
+    color: #fff !important;
+    background-color: #c8c7c4ef !important;
+    outline: none !important; 
+    box-shadow: none !important; 
 }
 
 .container.mt-5 {

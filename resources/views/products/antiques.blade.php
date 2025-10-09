@@ -1,6 +1,5 @@
 @extends('user.app')
 @section('title') Antiques and Collectibles @endsection
-
 @section('content1')
     @include('partials.productContent')
 @endsection

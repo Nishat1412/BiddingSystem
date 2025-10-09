@@ -63,23 +63,25 @@ class AdminAuthController extends Controller
 
         $pdf = Pdf::loadView('admin.product_pdf', compact('product'));
 
-        return $pdf->download("product_{$id}.pdf");
+        //return $pdf->download("product_{$id}.pdf");
+                return $pdf->stream("product_{$id}.pdf");
+
     }
 
     public function pendingAuctions()
-    {
+{
     $products = DB::table('products')
         ->where('auction_status', 'pending')
         ->leftJoin('document_submissions', 'document_submissions.user_id', '=', 'products.user_id')
         ->select(
             'products.*',
             'document_submissions.identity_card',
-            'document_submissions.cash_memo'
+            'document_submissions.birth_certificate_or_passport'
         )
         ->get();
 
     return view('admin.pending_auctions', compact('products'));
-    }
+}
 
     public function generateDocumentPdf($type, $user_id)
 {
@@ -91,10 +93,10 @@ class AdminAuthController extends Controller
         $folder = public_path('identity/');
         $title = 'User NID - ' . $user_id;
 
-    } elseif ($type === 'invoice') {
-        $file = $doc->cash_memo;
-        $folder = public_path('invoice/');
-        $title = 'User Invoice - ' . $user_id;
+    }   elseif ($type === 'birth') {
+        $file = $doc->birth_certificate_or_passport;
+        $folder = public_path('documents/');
+        $title = 'User Birth Certificate / Passport - ' . $user_id;
 
     } else {
         abort(400, 'Invalid document type');

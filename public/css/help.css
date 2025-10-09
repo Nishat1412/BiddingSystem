@@ -1,0 +1,92 @@
+ .help-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 30px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .help-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .help-header h2 {
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .help-header p {
+        color: #6c757d;
+        font-size: 1.1rem;
+    }
+
+    .faq-section h4 {
+        font-weight: 600;
+        color: #c6931e;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #e9ecef;
+    }
+
+    /* Accordion styles */
+    .card-header {
+        padding: 0;
+        border: none;
+        background: none;
+    }
+
+    .card-header h5 button {
+        width: 100%;
+        text-align: left;
+        padding: 15px 20px;
+        font-weight: 500;
+        color: #343a40;
+        text-decoration: none;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f8f9fa;
+        transition: background-color 0.3s ease;
+    }
+
+    .card-header h5 button:hover,
+    .card-header h5 button:not(.collapsed) {
+        background-color: #e9ecef;
+        color: #c6931e;
+    }
+
+    .card-header h5 button.collapsed::after {
+        content: '+';
+        float: right;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .card-header h5 button:not(.collapsed)::after {
+        content: '−';
+        float: right;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .card-body {
+        padding: 20px;
+        line-height: 1.6;
+        border-top: 1px solid #ddd;
+        background-color: #fff;
+    }
+
+    .contact-support {
+        margin-top: 40px;
+        padding: 25px;
+        text-align: center;
+        background-color: #f1f3f5;
+        border-radius: 8px;
+    }
+
+    .contact-support p {
+        margin-bottom: 5px;
+        font-size: 1.1rem;
+    }

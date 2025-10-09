@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>{{ $type }}</title>
+    <title>{{ $type }} PDF</title>
 </head>
 <body>
     <h2>{{ $type }}</h2>

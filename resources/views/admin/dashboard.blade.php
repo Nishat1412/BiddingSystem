@@ -24,7 +24,7 @@
     
     <div class="card-body">
         <p class="card-text">Check all the bid history here.</p>
-        <a href="#" class="btn btn-primary btn-view">
+        <a href="{{ route('bids.index') }}" class="btn btn-primary btn-view">
             View Bid History
         </a>
     </div>

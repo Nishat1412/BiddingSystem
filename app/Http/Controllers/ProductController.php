@@ -46,23 +46,30 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'product_name' => 'required|string|max:255',
-            'product_description' => 'nullable|string',
-            'category' => 'required|string|max:100',
-            'product_price' => 'required|numeric',
-            'product_rating' => 'nullable|numeric|min:0|max:5',
-            'product_image' => 'nullable|image|mimes:jpg,jpeg,png',
-        ]);
+       $data = $request->validate([
+        'product_name' => 'required|string|max:255',
+        'product_description' => 'nullable|string',
+        'category' => 'required|string|max:100',
+        'product_price' => 'required|numeric',
+        'product_rating' => 'nullable|numeric|min:0|max:5',
+        'product_image' => 'nullable|image|mimes:jpg,jpeg,png',
+        'cash_memo' => 'nullable|file|mimes:jpg,jpeg,png,pdf', 
+    ]);
 
- if ($request->hasFile('product_image')) {
-    
-    $imageFile = $request->file('product_image');
-    $filename = time() . '.' . $imageFile->getClientOriginalName();
-    $imageFile->storeAs('', $filename, 'uploads'); 
 
-    $data['product_image'] = $filename;
-}
+    if ($request->hasFile('product_image')) {
+        $imageFile = $request->file('product_image');
+        $filename = time() . '.' . $imageFile->getClientOriginalName();
+        $imageFile->storeAs('', $filename, 'uploads'); 
+        $data['product_image'] = $filename;
+    }
+
+    if ($request->hasFile('cash_memo')) {
+        $memoFile = $request->file('cash_memo');
+        $memoName = time() . '_' . $memoFile->getClientOriginalName();
+        $memoFile->storeAs('', $memoName, 'invoice'); 
+        $data['cash_memo'] = $memoName;
+    }
 
 
         $data['user_id'] = auth()->id();
@@ -103,6 +110,8 @@ class ProductController extends Controller
         'product_price' => 'required|numeric',
         'product_rating' => 'nullable|numeric|min:0|max:5',
         'product_image' => 'nullable|image|mimes:jpg,jpeg,png',
+        'cash_memo' => 'nullable|file|mimes:jpg,jpeg,png,pdf',
+
     ]);
 
     $product = DB::table('products')->where('id', $id)->first();
@@ -119,6 +128,16 @@ class ProductController extends Controller
     $data['product_image'] = $filename; 
 }
 
+    if ($request->hasFile('cash_memo')) {
+        
+        if ($product->cash_memo && \Storage::disk('invoice')->exists($product->cash_memo)) {
+            \Storage::disk('invoice')->delete($product->cash_memo);
+        }
+        $memoFile = $request->file('cash_memo');
+        $memoName = time() . '_' . $memoFile->getClientOriginalName();
+        $memoFile->storeAs('', $memoName, 'invoice');
+        $data['cash_memo'] = $memoName;
+    }
 
     $data['updated_at'] = now();
     DB::table('products')->where('id', $id)->update($data);

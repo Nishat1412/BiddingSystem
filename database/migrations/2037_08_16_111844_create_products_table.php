@@ -17,9 +17,11 @@ return new class extends Migration
     $table->unsignedBigInteger('user_id');
     $table->string('product_image')->nullable();
     $table->text('product_description')->nullable();
-     $table->string('category', 100);
+    $table->string('category', 100);
     $table->float('product_price');
     $table->float('product_rating')->default(0);
+    $table->string('cash_memo')->nullable();
+    $table->enum('auction_status', ['pending','approved','rejected','none'])->default('none');
     $table->timestamps();
     $table->foreign('user_id')->references('id')->on('user_records')->onDelete('cascade');
 });

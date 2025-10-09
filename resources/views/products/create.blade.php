@@ -32,8 +32,6 @@
         <option value="automobiles" {{ old('category') == 'automobiles' ? 'selected' : '' }}>Automobiles</option>
     </select>
 </div>
-
-
         <div class="form-group mb-3">
             <label>Price ($)</label>
             <input type="number" name="product_price" step="0.01" class="form-control" required value="{{ old('product_price') }}">
@@ -45,7 +43,8 @@
         </div>
 
         <div class="form-group mb-3">
-            <label>Description</label>
+            <label>Description</label> <label style="color : #ef1d1dff; font-size: 14px;">(Please include the duration you want the auction to run)*</label>
+            <p style=" font-size: 14px; margin-left: 90px"> (Eg: Auction Duration: Start Date: MM/DD/YYYY to End Date: MM/DD/YYYY)</p>
             <textarea name="product_description" class="form-control">{{ old('product_description') }}</textarea>
         </div>
 
@@ -54,7 +53,12 @@
             <input type="file" name="product_image" class="form-control">
         </div>
 
-        <button type="submit" class="btn btn-success">Add Product</button>
+        <div class="form-group mb-3">
+            <label>Cash Memo</label>
+            <input type="file" name="cash_memo" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-bid">Add Product</button>
         @php
             $category = old('category', '');
             $categoryRoute = match(strtolower($category)) {

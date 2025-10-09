@@ -2,9 +2,9 @@
 @section('title', 'User Dashboard')
 @section('content5')
 <div class="container mt-5">
-    <h3>Your Listed Products</h3>
+      <h3 class="heading mb-4"> Your Listed Products </h3>
     <table class="table table-bordered">
-      <thead>
+    <thead class="table-heading">
         <tr>
           <th>Product</th>
           <th>Category</th>

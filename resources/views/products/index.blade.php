@@ -4,7 +4,9 @@
 
 
 <div class="container auction-section">
+  <h3 class="mb-4 text-center text-capitalize"> All Products</h3>
     <div class="row">
+
 
         @foreach($products as $product)
         <div class="col-sm-6 col-md-3 mb-4">
@@ -27,7 +29,7 @@
 
                 <div class="card-body text-center">
                     <h5 class="card-title">{{ $product->product_name }}</h5>
-                    <p class="card-text">Current bid: ${{ $product->product_price }}</p>
+                    <p class="card-text">Starting bid: ${{ $product->product_price }}</p>
 
                 </div>
             </div>

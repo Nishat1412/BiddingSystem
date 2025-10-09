@@ -1,79 +1,71 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
     $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
+        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
     });
 
-    // Quick view modal 
-    $('#productModal').on('show.bs.modal', function(event){
+    $('#productModal').on('show.bs.modal', function (event) {
         const button = $(event.relatedTarget);
         const modal = $(this);
+        const scrollY = window.scrollY;
+
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.width = '100%';
+
         modal.find('.modal-title').text(button.data('name'));
         modal.find('.modal-price').text(button.data('price'));
         modal.find('.modal-description').text(button.data('description'));
         modal.find('.modal-rating').text(button.data('rating'));
         modal.find('.modal-img').attr('src', button.data('image'));
     });
-    
 
-    $('#startAuctionForm').on('submit', function(e){
+    $('.startAuctionForm').on('submit', function (e) {
         e.preventDefault();
-
         const form = $(this);
-        const start = new Date(form.find('[name="start_time"]').val());
-        const end   = new Date(form.find('[name="end_time"]').val());
-
-        $('#auction-start').text(start.toISOString());
-        $('#auction-end').text(end.toISOString());
-        $('#auction-info').show();
 
         $.ajax({
             url: form.attr('action'),
             method: 'POST',
             data: form.serialize(),
-            success: function(res){
-                if(res.success){
-                    alert('Auction started for all products!');
-                    $('#startAuctionModal').modal('hide');
+            success: function (res) {
+                if (res.success) {
+                    alert('Auction started successfully!');
+                    form.closest('.modal').modal('hide');
                     location.reload();
                 } else {
                     alert(res.message || 'Failed to start auction.');
                 }
             },
-            error: function(xhr){
-                let msg = xhr.responseJSON?.message || 'Error starting auction';
-                alert(msg);
+            error: function (xhr) {
+                alert(xhr.responseJSON?.message || 'Error starting auction.');
             }
         });
     });
 
+    function startProductCountdowns() {
+        const timers = document.querySelectorAll('.countdown-timer');
 
-    function startCountdown(){
-        let startElem = document.getElementById("auction-start");
-        let endElem   = document.getElementById("auction-end");
-        let countdownElem = document.getElementById("auction-countdown");
+        timers.forEach(timer => {
+            const start = new Date(timer.dataset.start).getTime();
+            const end = new Date(timer.dataset.end).getTime();
+            const timeLeftEl = timer.querySelector('.time-left');
 
-        if (startElem && endElem && startElem.textContent.trim() !== "" && endElem.textContent.trim() !== "") {
-            let startTime = new Date(startElem.textContent).getTime();
-            let endTime   = new Date(endElem.textContent).getTime();
+            const interval = setInterval(() => {
+                const now = new Date().getTime();
 
-            let timer = setInterval(function () {
-                let now = new Date().getTime();
-
-                if (now < startTime) {
-                    let distance = startTime - now;
-                    countdownElem.innerHTML = "Auction starts in: " + formatTime(distance);
-                } else if (now >= startTime && now < endTime) {
-                    let distance = endTime - now;
-                    countdownElem.innerHTML = "Auction ends in: " + formatTime(distance);
+                if (now < start) {
+                    timeLeftEl.textContent = formatTime(start - now);
+                    timer.querySelector('.countdown-label').textContent = "Starts in:";
+                } else if (now >= start && now < end) {
+                    timeLeftEl.textContent = formatTime(end - now);
+                    timer.querySelector('.countdown-label').textContent = "Ends in:";
                 } else {
-                    countdownElem.innerHTML = "Auction finished";
-                    clearInterval(timer);
+                    timeLeftEl.textContent = "Finished";
+                    clearInterval(interval);
                 }
             }, 1000);
-        }
+        });
     }
 
     function formatTime(ms) {
@@ -84,6 +76,6 @@ $(document).ready(function(){
         return `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
 
-    startCountdown();
-
+    startProductCountdowns();
 });
+

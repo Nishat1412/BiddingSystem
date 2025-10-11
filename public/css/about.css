@@ -1,0 +1,93 @@
+
+.about-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.about-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.about-header h2 {
+    font-weight: 600;
+    color: #333;
+}
+
+.about-header .tagline {
+    color: #6c757d;
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+.section-divider {
+    border-top: 1px solid #e9ecef;
+    margin: 40px 0;
+}
+
+.mission-section p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    text-align: center;
+}
+
+.values-section h4,
+.team-section h4,
+.join-us-section h4 {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.value-item {
+    text-align: center;
+    padding: 20px;
+}
+
+.value-icon {
+    font-size: 3rem;
+    color: #c6931e;
+    margin-bottom: 15px;
+}
+
+.team-member-card {
+    border: none;
+    text-align: center;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.team-member-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto 15px auto;
+    border: 3px solid #e9ecef;
+}
+
+.team-member-card .name {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.team-member-card .title {
+    color: #6c757d;
+}
+
+.join-us-section {
+    text-align: center;
+    padding: 25px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}

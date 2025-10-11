@@ -46,7 +46,34 @@ return [
             'throw' => false,
             'report' => false,
         ],
+            'uploads' => [
+            'driver' => 'local',
+            'root' => public_path('uploads'), 
+            'url' => env('APP_URL').'/uploads',
+            'visibility' => 'public',
+        ],
+            'identity' => [
+            'driver' => 'local',
+            'root' => public_path('identity'),  
+            'url' => env('APP_URL').'/identity',
+            'visibility' => 'public',
+        ],
 
+            'documents' => [
+            'driver' => 'local',
+            'root'   => public_path('documents'),
+            'url'    => env('APP_URL') . '/documents',
+            'visibility' => 'public',
+        ],
+
+            'invoice' => [
+            'driver' => 'local',
+            'root' => public_path('invoice'),
+            'url' => env('APP_URL') . '/invoice',
+            'visibility' => 'public',
+        ],
+
+        
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

@@ -162,7 +162,10 @@ public function startSingle(Request $request, $productId)
 
         $owner = DB::table('user_records')->where('id', $product->user_id)->first();
         if ($owner && $owner->email) {
-            Mail::to($owner->email)->send(new ProductAuctionStartedMail($product, $owner));
+           $auction = DB::table('auctions')->where('product_id', $product->id)->first();
+
+            Mail::to($owner->email)->send(new ProductAuctionStartedMail($product, $owner, $auction));
+
         }
 
         return response()->json(['success' => true, 'message' => 'Auction started successfully.']);

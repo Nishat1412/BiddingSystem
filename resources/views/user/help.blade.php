@@ -1,10 +1,9 @@
 @extends('user.app')
 @section('title') Help @endsection
-
+@push('styles')
+<link rel="stylesheet" href="{{ asset('css/help.css') }}">
+@endpush
 @section('content1')
-
-
-
 <div class="help-container">
     <div class="help-header">
         <h2>Help & Support</h2>
@@ -118,7 +117,7 @@
 
     <div class="contact-support">
         <p><strong>Still have questions?</strong></p>
-        <p>If your question isn't answered here, please contact us at <a href="mailto:support@bidmaster.com">support@bidmaster.com</a>.</p>
+        <p>If your question isn't answered here, please contact us at <a href="mailto:admin1@bidgmail.com" style = "color: #c6931e">admin1@bidgmail.com</a>.</p>
     </div>
 
 </div>

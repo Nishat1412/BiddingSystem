@@ -7,6 +7,21 @@ use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $products = DB::table('products')
+            ->when($query, function ($q) use ($query) {
+                $q->where('product_name', 'like', "%{$query}%")
+                ->orWhere('product_description', 'like', "%{$query}%")
+                ->orWhere('category', 'like', "%{$query}%");
+            })
+            ->get();
+
+        return view('products.index', compact('products', 'query'));
+    }
+
     public function index()
     {
         $products = DB::table('products')->get();

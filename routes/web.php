@@ -77,6 +77,7 @@ Route::get('/auctions/antiques',       [AuctionController::class,'antiques'])->n
 Route::get('/auctions/memorabilia',    [AuctionController::class,'memorabilia'])->name('auctions.memorabilia');
 Route::get('/auctions/automobiles',    [AuctionController::class,'automobiles'])->name('auctions.automobiles');
 
+Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');   
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/gadgets', [ProductController::class, 'gadget'])->name('products.gadgets');
 Route::get('/products/artwork', [ProductController::class, 'artwork'])->name('products.artwork');

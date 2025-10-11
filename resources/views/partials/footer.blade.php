@@ -7,7 +7,7 @@
                 <i class="fas fa-phone-alt mr-2"></i> +1 (234) 567-8901
             </p>
             <p class="mb-3">
-                <i class="fas fa-envelope mr-2"></i> support@bidmaster.com
+                <i class="fas fa-envelope mr-2"></i> admin1@bidgmail.com
             </p>
         </div>
 

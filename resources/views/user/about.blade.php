@@ -1,11 +1,8 @@
 @extends('user.app')
 @section('title') About Us @endsection
-
-
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/about.css') }}">
+<link rel="stylesheet" href="{{ asset('css/about.css') }}">
 @endpush
-
 @section('content1')
 
 <div class="about-container">
@@ -65,7 +62,7 @@
                 <div class="card team-member-card">
                     <img src="https://placehold.co/150x150/EFEFEF/333?text=CEO" alt="Team Member">
                     <div class="card-body">
-                        <h5 class="name">Jane Doe</h5>
+                        <h5 class="name">John Smith</h5>
                         <p class="title">Founder & Chief Curator</p>
                     </div>
                 </div>
@@ -74,7 +71,7 @@
                  <div class="card team-member-card">
                     <img src="https://placehold.co/150x150/333/EFEFEF?text=Lead" alt="Team Member">
                     <div class="card-body">
-                        <h5 class="name">John Smith</h5>
+                        <h5 class="name">Jessica Smith</h5>
                         <p class="title">Lead Platform Engineer</p>
                     </div>
                 </div>
@@ -87,7 +84,7 @@
     <div class="join-us-section">
         <h4>Join Our Community</h4>
         <p>Ready to find your next treasure or sell a valuable item? Become a part of the BidMaster family today.</p>
-        <a href="{{ route('auctions.index') }}" class="btn btn-primary mt-3">Browse Auctions</a>
+        <a href="{{ route('auctions.index') }}" class="btn btn-success mt-3">Browse Auctions</a>
         <a href="{{ route('register.create') }}" class="btn btn-secondary mt-3">Register Now</a>
     </div>
 

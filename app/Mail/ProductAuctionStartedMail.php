@@ -14,13 +14,21 @@ class ProductAuctionStartedMail extends Mailable
 
     public $product;
     public $owner;
+    public $auction;
 
-    public function __construct($product, $owner)
+    /**
+     * Create a new message instance.
+     */
+    public function __construct($product, $owner, $auction)
     {
         $this->product = $product;
         $this->owner   = $owner;
+        $this->auction = $auction; 
     }
 
+    /**
+     * Define the email envelope (subject, etc.)
+     */
     public function envelope(): Envelope
     {
         return new Envelope(
@@ -28,6 +36,9 @@ class ProductAuctionStartedMail extends Mailable
         );
     }
 
+    /**
+     * Define the email content and view data.
+     */
     public function content(): Content
     {
         return new Content(
@@ -35,10 +46,14 @@ class ProductAuctionStartedMail extends Mailable
             with: [
                 'product' => $this->product,
                 'owner'   => $this->owner,
+                'auction' => $this->auction, 
             ],
         );
     }
 
+    /**
+     * Attachments (if any)
+     */
     public function attachments(): array
     {
         return [];

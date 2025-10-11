@@ -55,6 +55,7 @@
     .card-header h5 button:not(.collapsed) {
         background-color: #e9ecef;
         color: #c6931e;
+        box-shadow: none !important;
     }
 
     .card-header h5 button.collapsed::after {

@@ -12,9 +12,12 @@
         <div class="collapse navbar-collapse" id="mainNavbar">
 
 
-            <form class="form-inline mx-auto w-50">
-                <input class="form-control w-100 rounded-pill px-3" type="search"
-                       placeholder="Search Items" aria-label="Search">
+              <form action="{{ route('products.search') }}" method="GET" class="form-inline mx-auto w-50">
+                <input class="form-control w-100 rounded-pill px-3"
+                    type="search"
+                    name="query"
+                    placeholder="Search Items..."
+                    value="{{ request('query') }}">
             </form>
 
 

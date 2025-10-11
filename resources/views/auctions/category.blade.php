@@ -57,9 +57,10 @@
                     @endif
                     @endauth
 
-                   @guest('admin')
-                        <div class="d-flex justify-content-around mt-3">
-                            @auth('user_record')
+                    @guest('admin')
+                    <div class="d-flex justify-content-around mt-3">
+                        @auth('user_record')
+                            @if($product->auction_status === 'active' && $product->start_time && $product->end_time && \Carbon\Carbon::now()->gte($product->start_time))
                                 
                                 @if($product->user_id != auth('user_record')->id())
                                     <button class="btn btn-primary btn-sm"
@@ -70,27 +71,30 @@
                                             data-current-bid="{{ $product->current_bid ?? $product->product_price }}">
                                         <i class="fas fa-gavel"></i> Bid Now
                                     </button>
-                                    @else
-                                        <span class="text-muted">Your Product</span>
-                                    @endif
+                                @else
+                                    <span class="text-muted">Your Product</span>
+                                @endif
 
-                                   
-                                    <button class="btn btn-info btn-sm" 
-                                            data-toggle="modal" 
-                                            data-target="#bidHistoryModal"
-                                            data-product-id="{{ $product->id }}">
-                                        <i class="fas fa-history"></i> History
-                                    </button>
+                                <button class="btn btn-info btn-sm" 
+                                        data-toggle="modal" 
+                                        data-target="#bidHistoryModal"
+                                        data-product-id="{{ $product->id }}">
+                                    <i class="fas fa-history"></i> History
+                                </button>
+
                             @else
-                                <a href="{{ route('login') }}" class="btn btn-primary btn-sm">
-                                    <i class="fas fa-gavel"></i> Bid Now
-                                </a>
-                            @endauth
-                        </div>
-                    @endguest
-                </div>
+                                <span class="text-muted">Auction yet to start</span>
+                            @endif
+                        @else
+                            <a href="{{ route('login') }}" class="btn btn-primary btn-sm">
+                                <i class="fas fa-gavel"></i> Bid Now
+                            </a>
+                        @endauth
+                    </div>
+                @endguest
             </div>
         </div>
+    </div>
 
         {{-- Start Auction Modal per product --}}
         @auth('admin')

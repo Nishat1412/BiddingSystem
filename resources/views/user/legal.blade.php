@@ -69,7 +69,7 @@
         {{-- Card 4 --}}
         <div class="col-lg-3 col-md-6 mb-4">
             <div class="card h-100 text-center shadow-sm">
-                <img class="card-img-top" src="{{ asset('image/lawyers/lawyer4.jpg') }}" alt="Photo of Michael Brown">
+                <img class="card-img-top" src="{{ asset('image/nibi.jpg') }}" alt="Photo of Michael Brown">
                 <div class="card-body">
                     <h5 class="card-title">Nazibah Ibnat Nibedita</h5>
                     <p class="card-text text-muted">Lawyer ID: LWYR-004</p>

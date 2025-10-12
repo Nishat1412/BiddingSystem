@@ -39,7 +39,7 @@
                          data-start="{{ $product->start_time }}"
                          data-end="{{ $product->end_time }}"
                          data-product-id="{{ $product->id }}">
-                         <span class="countdown-label"> Ends in: </span>
+                         <span class="countdown-label"> Auction Ends in: </span>
                          <span class="time-left"></span>
                     </div>
                     @endif

@@ -59,7 +59,7 @@ $(document).ready(function () {
                     timer.querySelector('.countdown-label').textContent = "Starts in:";
                 } else if (now >= start && now < end) {
                     timeLeftEl.textContent = formatTime(end - now);
-                    timer.querySelector('.countdown-label').textContent = "Ends in:";
+                    timer.querySelector('.countdown-label').textContent = "Auction Ends in:";
                 } else {
                     timeLeftEl.textContent = "Finished";
                     clearInterval(interval);
